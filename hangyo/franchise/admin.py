@@ -5,6 +5,7 @@ from import_export.admin import ExportActionModelAdmin, ImportExportMixin, Impor
 class StoreAdmin(ImportExportMixin, admin.ModelAdmin):
     pass
 
+
 admin.site.register(stores,StoreAdmin)
 
 # Register your models here.
