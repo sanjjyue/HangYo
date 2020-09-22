@@ -15,11 +15,11 @@ Including another URLconf
 """
 from django.contrib import admin
 from django.urls import path
-from franchise.views import home,makestore
+
 
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('', home, name = "home"),
-    path('makestore/', makestore, name = "makestore"),
+
 ]
+    
