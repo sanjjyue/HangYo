@@ -4,28 +4,35 @@ body{
     margin: 0 auto; 
     font-size: 12px;
 } 
-
-.wrapper{
-    position: absolute;
-    left: 50%;
+.wrapped{
     text-align: center;
 }
+.map{
+    display: block;
+    margin: 0px auto;
+}
+
+/* 버튼관련 */
+/* ------------------------------ */
 .category{
-    position: fixed;
+    /* 일단 지도 아래 중앙 */
+    /* position: fixed; */
+    /* top: 70%; */
     /* border: 1px red solid; */
-    height: 50px;
     display: inline-flex;
-    position: fixed;
+    height: 50px;
+    z-index: 2;
 }
 
 .popup_resetinfo { 
-    position: fixed; 
+    position: fixed;
     left: 0; 
     top: 0; 
     width: 100%; 
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); 
     opacity: 0; 
+    z-index: 1;
     visibility: hidden;
     transform: scale(1.1);
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
@@ -39,6 +46,7 @@ body{
     height: 100%;
     background-color: rgba(0, 0, 0, 0.5); 
     opacity: 0; 
+    z-index: 1;
     visibility: hidden;
     transform: scale(1.1);
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
@@ -46,8 +54,8 @@ body{
 
 .popupbox { 
     position: absolute; 
-    top: 30%; 
-    left: 33%; 
+    top: 40%; 
+    left: 50%; 
     transform: translate(-50%, -50%); 
     background-color: white; 
     padding: 1rem 1.5rem;
@@ -78,7 +86,19 @@ input{
     color: black; 
 }
 
-#close-button2{ 
+#close-button_save{ 
+    width: 100%;
+    height: 48px; 
+    text-align: center; 
+    background-color: skyblue;
+    color: black;
+    font-size: 15px;
+    border: none;
+    margin-top: 50px; 
+    cursor: pointer; 
+} 
+
+#close-button_Iknow{ 
     width: 100%;
     height: 48px; 
     text-align: center; 
