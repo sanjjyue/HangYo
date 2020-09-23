@@ -1,151 +1,268 @@
 body{ 
+    margin: 0 auto;
+    padding: 0px;
     text-align: center; 
     display: block;
-    margin: 0 auto; 
-    font-size: 12px;
-} 
+}
+
 .wrapped{
     text-align: center;
 }
+
 .map{
     display: block;
     margin: 0px auto;
 }
 
-/* 버튼관련 */
-/* ------------------------------ */
-.category{
-    /* 일단 지도 아래 중앙 */
-    /* position: fixed; */
-    /* top: 70%; */
-    /* border: 1px red solid; */
+/* 카테고리 */
+.categorybox{
+    width: 391px;
+    height: 64px;
+    padding-top: 7px;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px -5px 6px #00000029;
+    opacity: 1;
     display: inline-flex;
-    height: 50px;
     z-index: 2;
 }
 
-.popup_resetinfo { 
+#categorybutton{
+    width: 130px;
+    height: 64px;
+    border: none;
+    background-color: #FFFFFF;
+    font: normal normal 800 9px/26px NanumSquare_ac;
+}
+
+.categoryname{
+    font: normal normal 800 9px/26px NanumSquare_ac;
+    text-align: center;
+    letter-spacing: -0.14px;
+    color: #000000;
+    opacity: 0.5;
+}
+
+/* 팝업-잔액확인 */
+.checkbalance { 
     position: fixed;
     left: 0; 
     top: 0; 
-    width: 100%; 
-    height: 100%;
+    width: 393px;
+    height: 717px;
     background-color: rgba(0, 0, 0, 0.5); 
     opacity: 0; 
     z-index: 1;
     visibility: hidden;
-    transform: scale(1.1);
+    transform: translate(0%, 0%) scale(1.1);
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
 }
 
-.popup_checkbalance { 
-    position: fixed; 
-    left: 0; 
-    top: 0; 
-    width: 100%; 
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.5); 
-    opacity: 0; 
-    z-index: 1;
-    visibility: hidden;
-    transform: scale(1.1);
-    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
+.popupbox_checkbalance { 
+    position: absolute;
+    top: 178px;
+    left: 34px;
+    width: 323px;
+    height: 290px;
+    transform: translate(0%, 0%);
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 7px 7px 6px #00000029;
+    border-radius: 30px;
+    opacity: 1;
 }
 
-.popupbox { 
-    position: absolute; 
-    top: 40%; 
-    left: 50%; 
-    transform: translate(-50%, -50%); 
-    background-color: white; 
-    padding: 1rem 1.5rem;
-    padding-bottom: 0px;
-    width: 250px; 
-    height: 300px; 
-    border-radius: 1rem;
-    border-top-left-radius: 0px; 
+.icon_checkbalance{
+    /* top: 209px;
+    left: 175px;
+    width: 41px;
+    height: 41px; */
+    transform: translate(0%, 100%);
+    background: transparent url('img/coin.png') 0% 0% no-repeat padding-box;
+    opacity: 1;
 }
 
-.title{
-    font-size: 20px; 
+.btn_close_checkbalance{
+    /* top: 201px;
+    left: 313px; */
+    width: 50px;
+    height: 48px;
+    transform: translate(550%, -110%);
+    text-align: left;
+    font-size: 3rem;
+    color: #707070;
+    opacity: 1;
 }
 
-form { 
-    margin: 0 auto;
-    width: 100%; 
-}
-
-input{ 
-    width: 80%; 
-    height: 10px;
-    background-color: white; 
-    border: none;
-    border-bottom: 1px solid black; 
-    padding: 10px;
-    font-size: 1em; 
-    color: black; 
-}
-
-#close-button_save{ 
+.title_checkbalance{
+    top: 261px;
+    left: 154px;
     width: 100%;
-    height: 48px; 
-    text-align: center; 
-    background-color: skyblue;
-    color: black;
-    font-size: 15px;
-    border: none;
-    margin-top: 50px; 
-    cursor: pointer; 
-} 
-
-#close-button_Iknow{ 
-    width: 100%;
-    height: 48px; 
-    text-align: center; 
-    background-color: skyblue;
-    color: black;
-    font-size: 15px;
-    border: none;
-    margin-top: 50px; 
-    cursor: pointer; 
-} 
-
-/* 마우스커서 올라왔을 때 디자인변화
-#saveinfo:hover{ 
-    color:; 
-    background-color: ; 
-    opacity: 0.9; 
-}  */
-
-label { 
-    display: block; 
-    margin-top: 10px;
-    letter-spacing: 2px;
-    color: black;
-    font-size: 20px;
+    height: 26px;
+    padding-bottom: 24px;
+    text-align: center;
+    font: normal normal 800 23px/26px NanumSquare_ac;
+    letter-spacing: -0.34px;
+    color: #1E1B1B;
+    opacity: 1;
 }
 
-.close-button_1,.close-button_2{ 
-    float: right; 
-    width: 1.5rem;
-    line-height: 1.5rem; 
-    text-align: center; 
-    cursor: pointer; 
-    border-radius: 1rem;
-} 
-     
-/* .close-button:hover { 
-    background-color: white; 
-}  */
-     
-.show-popup_resetinfo{ 
+.contentbox{
+    width: 100%;
+    height: 96px;
+    padding-left: 40px;
+}
+
+.content{
+    top: 311px;
+    left: 74px;
+    width: 244px;
+    height: 96px;
+    text-align: center;
+    font: normal normal bold 20px/35px Agency FB;
+    letter-spacing: -0.6px;
+    color: #464646DB;
+    opacity: 1;
+}
+
+#btn_iknow{
+    top: 412px;
+    left: 34px;
+    width: 323px;
+    height: 56px;
+    background: #6FDFF1 0% 0% no-repeat padding-box;
+    border-radius: 0px 0px 20px 20px;
+    font: normal normal bold 21px/26px NanumSquare_ac;
+    letter-spacing: -0.32px;
+    opacity: 1;
+}
+
+.pop-checkbalance{ 
     opacity: 1; 
     visibility: visible; 
     transform: scale(1.0); 
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
 }
 
-.show-popup_checkbalance{ 
+/* 팝업-정보재설정 */
+.resetinfo {
+    position: fixed;
+    left: 0; 
+    top: 0; 
+    width: 393px;
+    height: 717px;
+    background-color: rgba(0, 0, 0, 0.5); 
+    opacity: 0; 
+    z-index: 1;
+    visibility: hidden;
+    transform: translate(0%, 0%) scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
+}
+
+.popupbox_resetinfo { 
+    position: absolute;
+    top: 178px; 
+    left: 34px;
+    width: 323px;
+    height: 362px;
+    transform: translate(0%, 0%);
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 7px 7px 6px #00000029;
+    border-radius: 30px;
+    opacity: 1;
+}
+
+.icon_resetinfo{
+    /* top: 173px;
+    left: 178px;
+    width: 40px;
+    height: 28px; */
+    transform: translate(0%, 100%);
+    background: transparent url('img/Lovepik_com-400223903-paper-plane.png') 0% 0% no-repeat padding-box;
+    opacity: 1;
+}
+
+.btn_close_resetinfo{
+    /* top: 169px;
+    right: 308px; */
+    width: 50px;
+    height: 48px;
+    transform: translate(550%, -80%);
+    text-align: left;
+    font-size: 3rem;
+    color: #707070;
+    opacity: 1; 
+}
+
+.title_resetinfo{
+    top: 213px;
+    left: 130px;
+    width: 100%;
+    height: 26px;
+    padding-bottom: 30px;
+    text-align: center;
+    font: normal normal 800 23px/26px NanumSquare_ac;
+    letter-spacing: -0.34px;
+    color: #1E1B1B;
+    opacity: 1;
+}
+
+input{ 
+    padding: 5px;
+    top: 294px;
+    left: 86px;
+    width: 217px;
+    border: none;
+    border-bottom: 1px solid #707070;
+    /* height: 0px; */
+    /* border: 1px solid #707070; */
+    opacity: 1;
+    font: normal normal bold 16px/26px NanumSquare_ac;
+}
+
+::placeholder{
+    top: 301px;
+    left: 87px;
+    width: 27px;
+    height: 20px;
+    text-align: left;
+    font: normal normal bold 16px/26px NanumSquare_ac;
+    letter-spacing: -0.24px;
+    color: #838383;
+    opacity: 1;
+}
+
+.notebox{
+    width: 100%;
+    height: 30px;
+    padding-left: 74px;
+    padding-top: 25px;
+    padding-bottom: 25px;
+
+}
+.note{
+    top: 393px;
+    left: 108px;
+    width: 175px;
+    height: 30px;
+    text-align: left;
+    font: normal normal bold 12px/17px NanumSquare_ac;
+    letter-spacing: -0.18px;
+    color: #CA2626;
+    opacity: 0.6;
+}
+
+#btn_saveinfo{
+    top: 451px;
+    left: 34px;
+    width: 323px;
+    height: 56px;
+    background: #6FDFF1 0% 0% no-repeat padding-box;
+    border-radius: 0px 0px 30px 30px;
+    font: normal normal bold 21px/26px NanumSquare_ac;
+    letter-spacing: -0.32px;
+    opacity: 1;
+}
+
+.pop-resetinfo{
     opacity: 1; 
     visibility: visible; 
     transform: scale(1.0); 
