@@ -11,55 +11,64 @@
 <body>
     <div class="wrapped">
         <div class="map">
-            <div id="map" style="width:480px;height:800px;display:inline-block;text-align:center;"></div>
+            <div id="map" style="width:393px;height:643px;display:inline-block;text-align:center;"></div>
         </div>
-        
-        <div class="category">
-            <button class="btn_myloca" onclick="panTo()">내 위치</button>
-            <button class="btn_resetinfo">정보 재설정하기</button>
-            <button class="btn_checkbalance">잔액 확인</button>
+
+        <!-- 카테고리 -->
+        <div class="categorybox">
+            <button class="btn_myloca" id="categorybutton" onclick="panTo()">
+                <img src="{% static 'image/geo.png' %}"  class="categoryicon">
+                <div class = "categoryname">내 위치</div>
+            </button>
+            
+            <button class="btn_checkbalance" id="categorybutton">
+                <img src="{% static 'image/money-bag.png' %}" class="categoryicon">
+                <div class = "categoryname">잔액 확인</div>
+            </button>
+            
+            <button class="btn_resetinfo" id="categorybutton">
+                <img src="{% static 'image/gear.png' %}"  class="categoryicon" >
+                <div class = "categoryname">정보 재설정하기</div>
+            </button>
         </div>
+
     </div>
-        
-    <!-- 팝업되는 창 -->
-    <div class="popup_resetinfo">
-        <div class="popupbox">
-            <span class="close-button_1">&times;</span>
-            <!-- <img class="icon" src=""> 종이비행기아이콘 넣기 -->
-            <h1 class="title">간편 정보 저장</h1>
-            <form action="#post.php" method="POST">
-                <label></label>
-                <input type="text" name="name" placeholder="이름" required="required">
-                <label></label>
-                <input type="text" name="location" placeholder="장소" required="required">
-                <label></label>
-                <input type="text" name="cardnumber" placeholder="카드번호(012345678901)" required="required">
-                <label></label>
-                <!-- <div class="">
-                    정보사용 설명
-                </div> -->
-                <input type="button" id="close-button_save" value="정보 저장하기">
-            </form>
+
+    <!-- 잔액 확인 팝업창 -->
+    <div class="checkbalance">
+        <div class="popupbox_checkbalance">
+            <img class="icon_checkbalance" src="{% static 'image/coin.png' %}">
+            <div class="btn_close_checkbalance">&times;</div>
+            <div class="title_checkbalance">잔액확인</div>
+            <div class="contentbox">
+                <div class="content">
+                    김태훈님의 현재 계좌잔액은 $999,999원 입니다.
+                </div>
+            </div>
+            <input type="button" id="btn_iknow" class="btn_iknow" value="알겠어요!">
         </div>
     </div>
 
-    <div class="popup_checkbalance">
-        <div class="popupbox">
-            <span class="close-button_2">&times;</span>
-            <img class="icon" src=""> 동전아이콘 넣기
-            <h1 class="title">잔액확인</h1>
-            
-            <form action="#post.php" method="POST">
-                <h5>
-                    이름,잔액 받아오기
-                    김태훈님의 현재 계좌잔액은 
-                    999,999원 입니다.
-                </h5>
-                <input type="button" id="close-button_Iknow" class="close-button_Iknow"value="알겠어요!">
-            </form>
+    <!-- 정보 재설정 팝업창 -->
+    <div class="resetinfo">
+        <div class="popupbox_resetinfo">
+            <img class="icon_resetinfo" src="{% static 'image/Lovepik.png' %}">
+            <div class="btn_close_resetinfo">&times;</div>
+            <div class="title_resetinfo">간편 정보 저장</div>
+            <input type="text" name="name" placeholder="이름">
+            <input type="text" name="location" placeholder="장소">
+            <input type="text" name="cardnumber" placeholder="카드번호(012345678901)">
+            <div class="notebox">
+                <div class="note">
+                    ※ 본 정보는 잔액확인 및 위치설정 등 사용자 편의성을 위해서만 사용됩니다.
+                </div>
+            </div>
+            <input type="button" id="btn_saveinfo" class="btn_saveinfo" value="확인">
         </div>
-    </div>
+    </div>    
+
     <script src="{% static 'js/map.js' %}"></script>
     <script src="{% static 'js/popup.js' %}"></script>
+
 </body>
 </html>
