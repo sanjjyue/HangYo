@@ -7,6 +7,13 @@ body{
 
 .wrapped{
     text-align: center;
+    position: relative;
+    margin: 0px auto;
+}
+
+.mainbox{
+    position: absolute;
+    left: 40%;
 }
 
 .map{
@@ -44,11 +51,12 @@ body{
 
 /* 팝업-잔액확인 */
 .checkbalance { 
-    position: fixed;
-    left: 0; 
+    position: absolute;
+    margin: 0px auto;
+    left: 40%;
     top: 0; 
     width: 393px;
-    height: 717px;
+    height: 720px;
     background-color: rgba(0, 0, 0, 0.5); 
     opacity: 0; 
     z-index: 1;
@@ -144,8 +152,8 @@ body{
 
 /* 팝업-정보재설정 */
 .resetinfo {
-    position: fixed;
-    left: 0; 
+    position: absolute;
+    left: 40%; 
     top: 0; 
     width: 393px;
     height: 717px;
