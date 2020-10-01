@@ -1,144 +1,156 @@
-body{ 
-    margin: 0 auto;
-    padding: 0px;
+body{
+    margin: 0;
+    padding: 0;
+    max-width: 1024px;
+    width: 100vw;
+    height: 100vh;
     text-align: center; 
-    display: block;
 }
 
-.wrapped{
-    text-align: center;
+.mainbox {
     position: relative;
-    margin: 0px auto;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
 }
 
-.mainbox{
+#map {
     position: absolute;
-    left: 40%;
-}
-
-.map{
-    display: block;
-    margin: 0px auto;
+    left: 0;
+    top: 0;
+    width:100%;
+    height:90%;
 }
 
 /* 카테고리 */
-.categorybox{
-    width: 391px;
-    height: 64px;
-    padding-top: 7px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px -5px 6px #00000029;
+.categorybar {
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 10%;
+    display: flex;
+    box-shadow: 0px -0.5em 1em #00000029;
     opacity: 1;
+    z-index: 1;
+}
+
+#categorybutton {
+    width: 100%;
+    height: 100%;
     display: inline-flex;
-    z-index: 2;
-}
-
-#categorybutton{
-    width: 130px;
-    height: 64px;
-    border: none;
+    flex-direction: column;
+    padding: 0;
+    border: 0;
+    outline: 0;
     background-color: #FFFFFF;
-    font: normal normal 800 9px/26px NanumSquare_ac;
+    text-align: center;
 }
 
-.categoryname{
-    font: normal normal 800 9px/26px NanumSquare_ac;
-    text-align: center;
+.categorybox {
+    width: 100%;
+    height: 90%;
+    padding: 5% 0% 5% 0%;
+}
+
+#categoryicon {
+    width: 100%;
+    height: 50%;
+}
+
+#categoryname {
+    font: normal normal 800 0.8em/3em NanumSquare_ac;
     letter-spacing: -0.14px;
     color: #000000;
     opacity: 0.5;
 }
 
-/* 팝업-잔액확인 */
-.checkbalance { 
+.checkbalance, .resetinfo { 
     position: absolute;
-    margin: 0px auto;
-    left: 40%;
-    top: 0; 
-    width: 393px;
-    height: 720px;
+    top: 0;
+    left: 0;
+    max-width: 1024px;
+    width: 100vw;
+    height: 100vh;
     background-color: rgba(0, 0, 0, 0.5); 
-    opacity: 0; 
+    opacity: 0;
     z-index: 1;
     visibility: hidden;
-    transform: translate(0%, 0%) scale(1.1);
-    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
+    /* transform: scale(1.1);
+    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;  */
 }
 
+/* 팝업-잔액확인 */
 .popupbox_checkbalance { 
     position: absolute;
-    top: 178px;
-    left: 34px;
-    width: 323px;
-    height: 290px;
-    transform: translate(0%, 0%);
+    top: 25%;
+    left: 12%;
+    width: 75%;
+    height: 40%;
     background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 7px 7px 6px #00000029;
-    border-radius: 30px;
-    opacity: 1;
-}
-
-.icon_checkbalance{
-    /* top: 209px;
-    left: 175px;
-    width: 41px;
-    height: 41px; */
-    transform: translate(0%, 100%);
-    background: transparent url('img/coin.png') 0% 0% no-repeat padding-box;
+    box-shadow: 0.5rem 0.5rem 0.5rem #00000029;
+    border-radius: 2rem;
     opacity: 1;
 }
 
 .btn_close_checkbalance{
-    /* top: 201px;
-    left: 313px; */
-    width: 50px;
-    height: 48px;
-    transform: translate(550%, -110%);
-    text-align: left;
+    position: absolute;
+    top: -4%;
+    right: 4%;
     font-size: 3rem;
     color: #707070;
     opacity: 1;
+    z-index: 1;
 }
 
-.title_checkbalance{
-    top: 261px;
-    left: 154px;
+.iconbox{
+    position: absolute;
+    top: 10%;
+    left: 0;
     width: 100%;
-    height: 26px;
-    padding-bottom: 24px;
-    text-align: center;
-    font: normal normal 800 23px/26px NanumSquare_ac;
+    opacity: 1;
+}
+
+.titlebox_checkbalance{
+    position: absolute;
+    top: 30%;
+    left: 0;
+    width: 100%;
+}
+
+.title{
+    font: normal normal 800 1.3em/2em NanumSquare_ac;
     letter-spacing: -0.34px;
     color: #1E1B1B;
     opacity: 1;
 }
 
 .contentbox{
-    width: 100%;
-    height: 96px;
-    padding-left: 40px;
+    position: absolute;
+    top: 42%;
+    left: 0;
+    width: 90%;
+    padding: 5%;
 }
 
 .content{
-    top: 311px;
-    left: 74px;
-    width: 244px;
-    height: 96px;
+    padding: 0% 4% 0% 4%;
     text-align: center;
-    font: normal normal bold 20px/35px Agency FB;
+    font: normal normal bold 1.2em/1.5em Agency FB;
     letter-spacing: -0.6px;
     color: #464646DB;
     opacity: 1;
 }
 
 #btn_iknow{
-    top: 412px;
-    left: 34px;
-    width: 323px;
-    height: 56px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
     background: #6FDFF1 0% 0% no-repeat padding-box;
-    border-radius: 0px 0px 20px 20px;
-    font: normal normal bold 21px/26px NanumSquare_ac;
+    border-radius: 0 0 2rem 2rem;
+    font: normal normal bold 1.2em/1.8em NanumSquare_ac;
     letter-spacing: -0.32px;
     opacity: 1;
 }
@@ -151,121 +163,92 @@ body{
 }
 
 /* 팝업-정보재설정 */
-.resetinfo {
-    position: absolute;
-    left: 40%; 
-    top: 0; 
-    width: 393px;
-    height: 717px;
-    background-color: rgba(0, 0, 0, 0.5); 
-    opacity: 0; 
-    z-index: 1;
-    visibility: hidden;
-    transform: translate(0%, 0%) scale(1.1);
-    transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s; 
-}
 
 .popupbox_resetinfo { 
     position: absolute;
-    top: 178px; 
-    left: 34px;
-    width: 323px;
-    height: 362px;
-    transform: translate(0%, 0%);
+    top: 20%;
+    left: 13%;
+    width: 70%;
+    height: 55%;
     background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 7px 7px 6px #00000029;
-    border-radius: 30px;
-    opacity: 1;
-}
-
-.icon_resetinfo{
-    /* top: 173px;
-    left: 178px;
-    width: 40px;
-    height: 28px; */
-    transform: translate(0%, 100%);
-    background: transparent url('img/Lovepik_com-400223903-paper-plane.png') 0% 0% no-repeat padding-box;
+    box-shadow: 0.5rem 0.5rem 0.5rem #00000029;
+    border-radius: 2rem;
     opacity: 1;
 }
 
 .btn_close_resetinfo{
-    /* top: 169px;
-    right: 308px; */
-    width: 50px;
-    height: 48px;
-    transform: translate(550%, -80%);
-    text-align: left;
+    position: absolute;
+    top: -2%;
+    right: 2%;
     font-size: 3rem;
     color: #707070;
-    opacity: 1; 
+    opacity: 1;
+    z-index: 1;
 }
 
-.title_resetinfo{
-    top: 213px;
-    left: 130px;
+.titlebox_resetinfo{
+    position: absolute;
+    top: 20%;
+    left: 0;
     width: 100%;
-    height: 26px;
-    padding-bottom: 30px;
-    text-align: center;
-    font: normal normal 800 23px/26px NanumSquare_ac;
+}
+
+/* .title{
+    font: normal normal 800 1.3em/2em NanumSquare_ac;
     letter-spacing: -0.34px;
     color: #1E1B1B;
     opacity: 1;
+} */
+
+.inputbox{
+    position: absolute;
+    top: 32%;
+    left: 0;
+    width: 100%;
+    padding: 1% 0% 1% 0%;
 }
 
-input{ 
-    padding: 5px;
-    top: 294px;
-    left: 86px;
-    width: 217px;
+input{
+    width: 70%;
+    padding: 0.2em;
     border: none;
     border-bottom: 1px solid #707070;
-    /* height: 0px; */
-    /* border: 1px solid #707070; */
+    font: normal normal bold 1em/1.5em NanumSquare_ac;
+    letter-spacing: -0.35px;
     opacity: 1;
-    font: normal normal bold 16px/26px NanumSquare_ac;
 }
 
 ::placeholder{
-    top: 301px;
-    left: 87px;
-    width: 27px;
-    height: 20px;
-    text-align: left;
-    font: normal normal bold 16px/26px NanumSquare_ac;
-    letter-spacing: -0.24px;
-    color: #838383;
-    opacity: 1;
+    height: 30%;
 }
 
 .notebox{
-    width: 100%;
-    height: 30px;
-    padding-left: 74px;
-    padding-top: 25px;
-    padding-bottom: 25px;
-
+    position: absolute;
+    top: 60%;
+    left: 0;
+    width: 90%;
+    padding: 5%;
 }
+
 .note{
-    top: 393px;
-    left: 108px;
-    width: 175px;
-    height: 30px;
-    text-align: left;
-    font: normal normal bold 12px/17px NanumSquare_ac;
+    width: 92%;
+    padding: 0% 4% 0% 4%;
+    text-align: center;
+    font: normal normal bold 1em/1.2em NanumSquare_ac;
     letter-spacing: -0.18px;
     color: #CA2626;
     opacity: 0.6;
 }
 
 #btn_saveinfo{
-    top: 451px;
-    left: 34px;
-    width: 323px;
-    height: 56px;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 15%;
     background: #6FDFF1 0% 0% no-repeat padding-box;
-    border-radius: 0px 0px 30px 30px;
-    font: normal normal bold 21px/26px NanumSquare_ac;
+    border-radius: 0 0 2rem 2rem;
+    font: normal normal bold 1.2em/1.5em NanumSquare_ac;
     letter-spacing: -0.32px;
     opacity: 1;
 }
