@@ -9,42 +9,53 @@
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a1e71c3e49ea6232c6622dd828be2a59"></script>
 </head>
 <body>
-    <div class="wrapped">
-        <div class="mainbox">
-            <div class="map">
-                <div id="map" style="width:393px;height:643px;display:inline-block;text-align:center;"></div>
-            </div>
-
-            <!-- 카테고리 -->
-            <div class="categorybox">
-                <button class="btn_myloca" id="categorybutton" onclick='panTo()'>
-                    <img src="{% static 'image/geo.png' %}"  class="categoryicon">
-                    <div class = "categoryname">내 위치</div>
-                </button>
-                
-                <button class="btn_checkbalance" id="categorybutton">
-                    <img src="{% static 'image/money-bag.png' %}" class="categoryicon">
-                    <div class = "categoryname">잔액 확인</div>
-                </button>
-                
-                <button class="btn_resetinfo" id="categorybutton">
-                    <img src="{% static 'image/gear.png' %}"  class="categoryicon" >
-                    <div class = "categoryname">정보 재설정하기</div>
-                </button>
-            </div>
-        </div>
-
     
-
+    <div class="mainbox">
+        <div class="map" id="map"></div>
+        <!-- 카테고리바 -->
+        <div class="categorybar">
+            <button class="btn_myloca" id="categorybutton" onclick='panTo()'>
+                <div class="categorybox">
+                    <div id="categoryicon">
+                        <img src="{% static 'image/geo.png' %}">
+                    </div>
+                    <div id = "categoryname">내 위치</div>
+                </div>
+            </button>
+                    
+            <button class="btn_checkbalance" id="categorybutton">
+                <div class="categorybox">
+                    <div class="i_checkbalance" id="categoryicon">
+                        <img src="{% static 'image/money-bag.png' %}">
+                    </div>
+                    <div id = "categoryname">잔액 확인</div>
+                </div>
+            </button>
+                    
+            <button class="btn_resetinfo" id="categorybutton">
+                <div class="categorybox">
+                    <div class="i_resetinfo" id="categoryicon">
+                        <img src="{% static 'image/gear.png' %}">
+                    </div>
+                    <div id = "categoryname">정보 재설정</div>
+                </div>
+            </button>
+        </div>
+    </div>
+    
     <!-- 잔액 확인 팝업창 -->
-    <div class="checkbalance">
+    <div class="checkbalance" id="modal">
         <div class="popupbox_checkbalance">
-            <img class="icon_checkbalance" src="{% static 'image/coin.png' %}">
+            <div class="iconbox">
+                <img src="{% static 'image/coin.png' %}">
+            </div>
             <div class="btn_close_checkbalance">&times;</div>
-            <div class="title_checkbalance">잔액확인</div>
+            <div class="titlebox_checkbalance">
+                <div class="title">잔액 확인</div>
+            </div>
             <div class="contentbox">
                 <div class="content">
-                    김태훈님의 현재 계좌잔액은 $999,999원 입니다.
+                    김태훈님의 현재 계좌 잔액은 $ 999,999원 입니다.
                 </div>
             </div>
             <input type="button" id="btn_iknow" class="btn_iknow" value="알겠어요!">
@@ -54,12 +65,18 @@
     <!-- 정보 재설정 팝업창 -->
     <div class="resetinfo">
         <div class="popupbox_resetinfo">
-            <img class="icon_resetinfo" src="{% static 'image/Lovepik.png' %}">
+            <div class="iconbox">
+                <img src="{% static 'image/Lovepik.png' %}">
+            </div>
             <div class="btn_close_resetinfo">&times;</div>
-            <div class="title_resetinfo">간편 정보 저장</div>
-            <input type="text" name="name" placeholder="이름">
-            <input type="text" name="location" placeholder="장소">
-            <input type="text" name="cardnumber" placeholder="카드번호(012345678901)">
+            <div class="titlebox_resetinfo">
+                <div class="title">간편 정보 저장</div>
+            </div>
+            <div class="inputbox">
+                <input type="text" name="name" placeholder="이름">
+                <input type="text" name="location" placeholder="장소">
+                <input type="text" name="cardnumber" placeholder="카드번호(012345678901)">
+            </div>
             <div class="notebox">
                 <div class="note">
                     ※ 본 정보는 잔액확인 및 위치설정 등 사용자 편의성을 위해서만 사용됩니다.
@@ -68,7 +85,6 @@
             <input type="button" id="btn_saveinfo" class="btn_saveinfo" value="확인">
         </div>
     </div>    
-    </div>
     <script src="{% static 'js/map.js' %}"></script>
     <script src="{% static 'js/popup.js' %}"></script>
 
