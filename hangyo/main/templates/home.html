@@ -9,6 +9,23 @@
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a1e71c3e49ea6232c6622dd828be2a59"></script>
 </head>
 <body>
+    <div class="map_wrap">
+        <div id="map" style="width:100%;height:100%;position:relative;overflow:hidden;"></div>
+    
+        <div id="menu_wrap" class="bg_white">
+            <div class="option">
+                <div>
+                    <form onsubmit="searchPlaces(); return false;">
+                        키워드 : <input type="text" value="동래구" id="keyword" size="15"> 
+                        <button type="submit">검색하기</button> 
+                    </form>
+                </div>
+            </div>
+            <hr>
+            <ul id="placesList"></ul>
+            <div id="pagination"></div>
+        </div>
+    </div>
     
     <div class="mainbox">
         <div class="map" id="map"></div>
@@ -84,12 +101,15 @@
             </div>
             <input type="button" id="btn_saveinfo" class="btn_saveinfo" value="확인">
         </div>
-    </div>    
+    </div> 
+        
     <script src="{% static 'js/map.js' %}"></script>
+    <!-- <script src="{% static 'js/search' %}"></script> -->
     <script src="{% static 'js/popup.js' %}"></script>
 
-
+    <!-- 지도 -->
     <script>
+    
 var container = document.getElementById('map');
 var options = {
     center: new kakao.maps.LatLng(35.234104, 129.078411),
@@ -98,18 +118,24 @@ var options = {
 // public static final MapView.CurrentLocationTrackingMode TrackingModeOnWithHeading
 var map = new kakao.maps.Map(container, options);
 
+
+
+
 //마커 속성
 var imageSrc = "/static/image/marker_store.png",
     imageSize = new kakao.maps.Size(55,64), 
     imageOption = {offset: new kakao.maps.Point(27, 69)}; //좌표랑 일치시킬 마커내의 좌표
 var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
+
 //현위치 마커속성
 var imageSrc1 = "/static/image/marker_me.png",
     imageSize1 = new kakao.maps.Size(20,20);
     // imageOption1 = {offset: new kakao.maps.Point(27, 69)}; //좌표랑 일치시킬 마커내의 좌표
 var markerImage1 = new kakao.maps.MarkerImage(imageSrc1, imageSize1)
+
 //내위치 버튼 연결
 var here = document.querySelector('.btn_myloca')
+
 //현재위치 마커표시
 if (navigator.geolocation) {
 // 접속위치 얻어오기
@@ -171,20 +197,6 @@ var positions = [
     },
     {% endfor %} 
 ];
-// var positions = [
-//     {
-//     content: '<div>부산대</div>', 
-//     latlng: new kakao.maps.LatLng(35.234104, 129.078411)
-//     },
-//     {
-//     content: '<div>카페드팽</div>', 
-//     latlng: new kakao.maps.LatLng(35.230288, 129.084147)
-//     },
-//     {
-//     content: '<div>벅구냥냥펀치</div>', 
-//     latlng: new kakao.maps.LatLng(35.231172, 129.085223)
-//     }
-// ];
 
 
 //커스텀 오버레이 생성
