@@ -29,7 +29,27 @@
     <!-- 추가 끝 -->
 
     <div class="mainbox">
+        
+        <!-- 검색바 -->
+        <div class="top-container">
+            <div class="local-box">
+                <div class="localname">
+                    장전동
+                </div>
+            </div>
+
+            <div class="search-box">
+                <input type="text" class="search-loca" name="searchlocation" placeholder="위치를 검색하세요">
+            </div>
+
+            <div class="i_searchloca">
+                <img class="magnifying-glass" src="{% static 'image/magnifying-glass.png' %}" >
+            </div>
+        </div>
+
+        <!-- 지도 -->
         <div class="map" id="map"></div>
+        
         <!-- 카테고리바 -->
         <div class="categorybar">
             <button class="btn_myloca" id="categorybutton" onclick='panTo()'>
@@ -78,7 +98,7 @@
             </div>
             <input type="button" id="btn_iknow" class="btn_iknow" value="알겠어요!">
         </div>
-    </div>
+    </div>    
 
     <!-- 정보 재설정 팝업창 -->
     <div class="resetinfo">
@@ -91,9 +111,9 @@
                 <div class="title">간편 정보 저장</div>
             </div>
             <div class="inputbox">
-                <input type="text" name="name" placeholder="이름">
-                <input type="text" name="location" placeholder="장소">
-                <input type="text" name="cardnumber" placeholder="카드번호(012345678901)">
+                <input type="text" class="input-info" name="name" placeholder="이름">
+                <input type="text" class="input-info" name="location" placeholder="장소">
+                <input type="text" class="input-info" name="cardnumber" placeholder="카드번호(012345678901)">
             </div>
             <div class="notebox">
                 <div class="note">
@@ -102,8 +122,16 @@
             </div>
             <input type="button" id="btn_saveinfo" class="btn_saveinfo" value="확인">
         </div>
+<<<<<<< HEAD
     </div> 
         
+=======
+    </div>
+
+    <!-- 가게 정보 팝업창 -->
+    
+
+>>>>>>> 5462469ad1879a7b780b622325f0a180aca04d21
     <script src="{% static 'js/map.js' %}"></script>
     <!-- <script src="{% static 'js/search' %}"></script> -->
     <script src="{% static 'js/popup.js' %}"></script>
@@ -326,7 +354,7 @@ var map = new kakao.maps.Map(container, options);
 
 //마커 속성
 var imageSrc = "/static/image/marker_store.png",
-    imageSize = new kakao.maps.Size(55,64), 
+    imageSize = new kakao.maps.Size(30 ,40), 
     imageOption = {offset: new kakao.maps.Point(27, 69)}; //좌표랑 일치시킬 마커내의 좌표
 var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
 
@@ -395,7 +423,64 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 var positions = [
     {% for i in take_all_info %}
     {
-    content: '<div>{{i.store_name}}</div>', 
+    content: ''+
+    '<div class="storeinfo">'+
+        '<div class="popupbox_storeinfo">' + 
+            '<div class="bar1"></div>' + 
+            '<div class="bar2"></div> ' +
+            '<div class="store">' + 
+                '<div class="storename">' + 
+                    '{{i.store_name}}' + 
+                '</div>' +
+                '<div class="storecategory-box">' +
+                    '<div class="storecategory">' +
+                        '{{i.store_type}}' +
+                        '</div>' +
+                        '</div>' +
+                        '</div>' +
+
+                        '<div class="storeloca-box">' +
+                            '<div class="i_storeloca" id="storeinfoicon">' +
+                                '<img src="{% static 'image/geo.png' %}">' +
+                                '</div>' +
+                                '<div class="storeloca">' +
+                                    '{{i.location}}' +
+                                    '</div>' +
+                                    '</div>' +
+
+                                    '<div class="storenumber-box">' +
+                                        '<div class="i_storenumber" id="storeinfoicon">' +
+                                            '<img src="{% static 'image/page-2.png' %}">' +
+                                            '</div>' +
+                                            '<div class="storenumber">' +
+                                                '{{i.phone_num}}' +
+                                                '</div>' +
+                                                '</div>' +
+
+                                                '<div class="storeinfo-btn-box">' +
+                                                    '<button class="btn_directions" id="storebutton">' +
+                                                        '<div class="i_directions" id="storeicon">' +
+                                                            '<img src="{% static 'image/junction.png' %}">' +
+                                                            '</div>' +
+                                                            '<div id = "btnname">길찾기</div>' +
+                                                            '</button>' +
+            
+                                                            '<button class="btn_call" id="storebutton">' +
+                                                                '<div class="i_call" id="storeicon">' +
+                                                                    '<img src="{% static 'image/page-1.png' %}">' +
+                                                                    '</div>' +
+                                                                    '<div id = "btnname">전화연결</div>' +
+                                                                    '</button>' +           
+                                                                    '<button class="btn_report" id="storebutton">' +
+                                                                        '<div class="i_report" id="storeicon">' +
+                                                                            '<img src="{% static 'image/siren.png' %}">' +
+                                                                            '</div>' +
+                                                                            '<div id = "btnname">제보하기</div>' +
+                                                                            '</button>' +
+                                                                            '</div>' +
+                                                                            '</div>' + 
+                                                                            '</div>'
+    , 
     latlng: new kakao.maps.LatLng({{i.Latitude}}, {{i.longitude}})
     },
     {% endfor %} 
