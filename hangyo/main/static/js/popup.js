@@ -39,3 +39,20 @@ btn_resetinfo.addEventListener("click", toggle_resetinfo);
 btn_close_resetinfo.addEventListener("click", toggle_resetinfo);
 btn_saveinfo.addEventListener("click", toggle_resetinfo);
 window.addEventListener("click", btn_resetinfo_OnClick);
+
+// 가맹점정보
+var storeinfo = document.querySelector(".storeinfo");
+var btn_storeinfo = document.querySelector(".btn_storeinfo");
+
+// function toggle_storeinfo(){
+//     storeinfo.classList.toggle("pop-storeinfo");
+// }
+
+// function btn_storeinfo_OnClick(event) {
+//     if (event.target === storeinfo) {
+//         toggle_storeinfo();
+//     }
+// }
+
+// btn_storeinfo.addEventListener("click", toggle_storeinfo);
+// window.addEventListener("click", btn_storeinfo_OnClick);
