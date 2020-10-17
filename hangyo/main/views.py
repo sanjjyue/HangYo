@@ -7,5 +7,3 @@ def mainpage(request):
     context = {'take_all_info' : all_info}
     return render(request,'home.html', context)
 
-def storeinfo(request):
-    return render(request, 'home.html', context)
