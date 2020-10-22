@@ -13,17 +13,16 @@
         
         <!-- 검색바 -->
         <div class="top-container">
-            <!-- <div class="local-box">
-                <div class="localname">
-                    장전동
+            <div class="local-box">
+                <div class="localname" id="localname">
                 </div>
-            </div> -->
+            </div>
             <div id="menu_wrap" class="bg_white">
-                <div class="search-box">
+                <div>
                     <form onsubmit="searchPlaces(); return false;">
-                        검색 : <input type="text" value="동래역" id="keyword" size="15">
+                        <input class="search-box" type="text" value="  " id="keyword" size="15">
                         <div class="i_searchloca">
-                            <button type="submit">
+                            <button class = "search-button" type="submit">
                                 <img class="magnifying-glass" src="{% static 'image/magnifying-glass.png' %}" >
                             </button> 
                         </div> 
@@ -37,6 +36,7 @@
                 <div id="pagination" class="pagination"></div>
             </div>
         </div>
+
 
         <!-- 지도 -->
         <div class="map" id="map"></div>
@@ -342,12 +342,43 @@ function removeAllChildNods(el) {
 
 // 추가 끝
 
+// 검색창 옆 현재위치 표시
+
+//현재중심좌표 가져옴
+// var center = map.getCenter();
+kakao.maps.event.addListener(map,'click',function(mouseEvent){
+    var center = mouseEvent.latLng;
+    var geocoder = new kakao.maps.services.Geocoder();
+
+var coord = new kakao.maps.LatLng(center.getLat(),center.getLng());
+var callback = function(result, status) {
+    if (status === kakao.maps.services.Status.OK) {
+        var current_coord = result[0].address.region_3depth_name;
+    }
+    var currentCoord = document.getElementById('localname');
+    currentCoord.innerHTML = current_coord;
+};
+
+geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
+});
+
+
+
+
+
 
 //마커 속성
 var imageSrc = "/static/image/marker_store.png",
     imageSize = new kakao.maps.Size(30 ,40), 
     imageOption = {offset: new kakao.maps.Point(27, 69)}; //좌표랑 일치시킬 마커내의 좌표
 var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
+
+//클릭시 마커속성
+var imageSrc_click = "/static/image/geo.png",
+    imageSize_click = new kakao.maps.Size(30 ,40), 
+    imageOption_click = {offset: new kakao.maps.Point(27, 69)}; //좌표랑 일치시킬 마커내의 좌표
+var markerImage_click = new kakao.maps.MarkerImage(imageSrc_click, imageSize_click, imageOption_click)
+
 
 //현위치 마커속성
 var imageSrc1 = "/static/image/marker_me.png",
@@ -417,8 +448,8 @@ var positions = [
     content: ''+
     '<div class="storeinfo">'+
         '<div class="popupbox_storeinfo">' + 
-            '<div class="bar1"></div>' + 
-            '<div class="bar2"></div> ' +
+            '<div class="bar1" ></div>' + 
+            '<div class="bar2" ></div> ' +
             '<div class="store">' + 
                 '<div class="storename">' + 
                     '{{i.store_name}}' + 
@@ -481,6 +512,9 @@ var positions = [
 ];
 
 
+
+
+
 //커스텀 오버레이 생성
 // for (var i = 0; i < contents.length; i ++) {
 //     var marker = new kakao.maps.Marker({
@@ -522,20 +556,70 @@ for (var i = 0; i < positions.length; i ++) {
         image: markerImage, 
         clickable: true
     });
-    var iwRemoveable = true; // true일 때 X버튼 생성
-    // 인포윈도우를 생성
-    var infowindow = new kakao.maps.InfoWindow({
-        content : positions[i].content,
-        removable : iwRemoveable
-    });
-    marker.setMap(map);  
-    kakao.maps.event.addListener(marker, 'click', clickListener(map,marker,infowindow));
-}
-function clickListener(map,marker,infowindow){
-    return function(){
-        infowindow.open(map, marker,infowindow);
+
+    kakao.maps.event.addListener(marker, 'click',function(clickMarkerImage){
+        $('.storeinfo').toggleClass('open');
+        if (!selectedMarker||selectedMarker !==marker){
+            !!selectedMarker && selectedMarker.setImage(selectedMarker.markerImage);
+            marker.setImage(clickMarkerImage);
+        }
+        selectedMarker = marker;
+        return false;
+        });
+
+    // var overlay = new kakao.maps.CustomOverlay({
+    //     content: positions[i].content,
+    //     map: map,
+    //     position: 
+    // });
+
+///
+//    var iwRemoveable = true; // true일 때 X버튼 생성
+//     // 인포윈도우를 생성
+//     var infowindow = new kakao.maps.InfoWindow({
+//         content : positions[i].content,
+//         removable : iwRemoveable,
+//     });
+    marker.setMap(map);
+//     kakao.maps.event.addListener(marker,'click',clickListener(map,marker,infowindow))
+
+//     function clickListener(map,marker,infowindow){
+//         return function(){
+//             infowindow.open(map, marker,infowindow);
+//         };
+//     }
+//     kakao.maps.event.addListener(map, 'click', function() {
+//        infowindow.close();
+//     });
+///
+
+    // kakao.maps.event.addListener(marker, 'click', clickListener(map,marker,infowindows));
+    //마커클릭시 반응
+
+    // // 클릭된 마커가 없고, click 마커가 클릭된 마커가 아니면
+    // // 마커의 이미지를 클릭 이미지로 변경합니다
+    // if (!selectedMarker || selectedMarker !== marker) {
+
+    //     // 클릭된 마커 객체가 null이 아니면
+    //     // 클릭된 마커의 이미지를 기본 이미지로 변경하고
+    //     !!selectedMarker && selectedMarker.setImage(selectedMarker.markerImage);
+
+    //     // 현재 클릭된 마커의 이미지는 클릭 이미지로 변경합니다
+    //     marker.setImage(markerImage_click);
+    // }
+
+    // 클릭된 마커를 현재 클릭된 마커 객체로 설정합니다
     };
-}
+
+
+
+
+
+//정보창 띄우기
+
+
+
+
 
     </script>
 </body>
