@@ -40,15 +40,38 @@ body{
     z-index: 0;
 }
 
-/* .placesList{
-    width: 100px;
-    height: 100%;
+.search-box{
+    position: absolute;
+    left: 22%;
+    width: 60%;
+    height: 43px;
+    margin: 0 1.8%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0px 3px 6px #00000029;
+    border-radius: 19px;
+    opacity: 1;
 }
-.pagination{
-    background-color: #CA2626;
-} */
+.i_searchloca{
+    position: absolute;
+    left: 90%;
+    width: 40px;
+    height: 40px;
+    padding: 9.92px 10.63px 10.41px 9.7px;
+    background: #4AD295 0% 0% no-repeat padding-box;
+    box-shadow: 0px 6px 10px #00000029;
+    opacity: 1;
+    border-radius: 100%;
+}
 
-/* .localname{
+.search-button{
+    border-radius: 50%;
+    width: 40px;
+    height: 40px;
+    background-color: transparent;
+    border: 0px transparent solid;
+}
+
+.localname{
     position: absolute;
     left: 50%;
     top: 50%;
@@ -61,17 +84,27 @@ body{
     z-index: 1;
 }
 
-.search-box{
-    position: absolute;
-    left: 22%;
-    width: 60%;
-    height: 43px;
-    margin: 0 1.8%;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0px 3px 6px #00000029;
-    border-radius: 19px;
+/* .magnifying-glass{
+    top: 35px;
+    left: 350px;
+    width: 23px;
+    height: 23px;
+    transform: matrix(0.02, 1, -1, 0.02, 0, 0);
+    background: transparent url('img/magnifying-glass.png') 0% 0% no-repeat padding-box;
     opacity: 1;
+}  */
+
+/* .placesList{
+    width: 100px;
+    height: 100%;
 }
+.pagination{
+    background-color: #CA2626;
+} */
+
+/* 
+
+
 
 .search-loca{
     position: absolute;
@@ -86,26 +119,8 @@ body{
     outline: 0;
 }
 
-.i_searchloca{
-    position: absolute;
-    left: 80%;
-    width: 43px;
-    height: 43px;
-    padding: 9.92px 10.63px 10.41px 9.7px;
-    background: #4AD295 0% 0% no-repeat padding-box;
-    box-shadow: 0px 6px 10px #00000029;
-    opacity: 1;
-    border-radius: 100%;
-}
-.magnifying-glass{
-    top: 35px;
-    left: 350px;
-    width: 23px;
-    height: 23px;
-    transform: matrix(0.02, 1, -1, 0.02, 0, 0);
-    background: transparent url('img/magnifying-glass.png') 0% 0% no-repeat padding-box;
-    opacity: 1;
-} */
+
+*/
 
 #map {
     position: absolute;
@@ -379,13 +394,38 @@ input{
     z-index: 1;
     cursor: alias;
 } */
-
-.storeinfo{
+.storeinfo {
+    width: 100%;
+    height: 25%;
+    max-width: 1024px;
     position: absolute;
+    /* position: fixed; */
+    bottom: 10%;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.25s ease-in-out;
+    z-index: 1;
+}
+
+.storeinfo.open {
+  opacity: 1;
+  visibility: visible;
+}
+
+
+/* .storeinfo{
+    position: absolute;
+    display: inline-block;
     bottom: 0;
     left: 0;
+<<<<<<< HEAD
     width: 30vw;
     height: 30vh;
+=======
+    width: 100vw;
+    height: 100px;
+>>>>>>> 6407fa8cab9a8fecca73c3ce350f6e148c5a166b
     max-width: 1024px;
     background-color: rgba(0, 0, 0, 0); 
     /* opacity: 0; */
@@ -395,7 +435,7 @@ input{
     visibility: visible; 
     transform: scale(1.0); 
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
-}
+} */
 
 .popupbox_storeinfo{
     position: absolute;
@@ -559,15 +599,15 @@ input{
 } */
 
 /* 검색 팝업 창 */
-.map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
+/* .map_wrap, .map_wrap * {margin:0;padding:0;font-family:'Malgun Gothic',dotum,'돋움',sans-serif;font-size:12px;}
 .map_wrap a, .map_wrap a:hover, .map_wrap a:active{color:#000;text-decoration: none;}
 .map_wrap {position:relative;width:100%;height:500px;}
-#menu_wrap {position:absolute;top:50;left:5000;bottom:10;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;} */
+#menu_wrap {position:absolute;top:50;left:5000;bottom:10;width:250px;margin:10px 0 30px 10px;padding:5px;overflow-y:auto;background:rgba(255, 255, 255, 0.7);z-index: 1;font-size:12px;border-radius: 10px;}
 .bg_white {background:#fff;}
 #menu_wrap hr {display: block; height: 1px;border: 0; border-top: 2px solid #5F5F5F;margin:3px 0;}
 #menu_wrap .option{text-align: center;}
 #menu_wrap .option p {margin:10px 0;}  
-#menu_wrap .option button {margin-left:5px;}
+#menu_wrap .option button {margin-left:5px;} */
 #placesList li {list-style: none;}
 #placesList .item {position:relative;border-bottom:1px solid #888;cursor: pointer;min-height: 65px;}
 #placesList .item span {display: block;margin-top:4px;}
