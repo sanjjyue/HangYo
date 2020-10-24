@@ -2,6 +2,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
+    <script src="https://code.jquery.com/jquery-3.5.1.js" integrity="sha256-QWo7LDvxbWT2tbbQ97B53yJnYU3WhH/C8ycbRAkjPDc=" crossorigin="anonymous"></script>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>hangyo</title>
@@ -144,7 +145,7 @@ var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 var keyword = document.getElementById('keyword').value;
 
 // 버튼 눌러야 검색함수 실행될 수 있도록 버튼을 불러옵니다
-var search_btn = document.querySelector("search_btn");
+var search_btn = document.querySelector("#search_btn");
 search_btn.addEventListener('click',function(searchPlaces){
 
 });
@@ -408,7 +409,7 @@ var positions = [
 // }
 
 
-
+var selectedMarker = null;
 console.log(positions)
 // 마커 생성
 for (var i = 0; i < positions.length; i ++) {
@@ -418,24 +419,41 @@ for (var i = 0; i < positions.length; i ++) {
         clickable: true
     });
 
-    var iwRemoveable = true; // true일 때 X버튼 생성
-    // 인포윈도우를 생성
-    var infowindow = new kakao.maps.InfoWindow({
-        content : positions[i].content,
-        removable : iwRemoveable
-    });
-    marker.setMap(map);
-    kakao.maps.event.addListener(marker,'click',clickListener(map,marker,infowindow));
-}
-    function clickListener(map,marker,infowindow){
-        return function(){
-            infowindow.open(map, marker,infowindow);
-        };
-    }
-    kakao.maps.event.addListener(map, 'click', function() {
-       infowindow.close();
-    });
+    kakao.maps.event.addListener(marker, 'click',function(clickMarkerImage){
+        $('.storeinfo').toggleClass('open');
+        if (!selectedMarker||selectedMarker !==marker){
+            selectedMarker && selectedMarker.setImage(selectedMarker.markerImage);
+            marker.setImage(clickMarkerImage);
+        }
+        selectedMarker = marker;
+        return false;
+        });
 
+    // var overlay = new kakao.maps.CustomOverlay({
+    //     content: positions[i].content,
+    //     map: map,
+    //     position: 
+    // });
+
+///
+//    var iwRemoveable = true; // true일 때 X버튼 생성
+//     // 인포윈도우를 생성
+//     var infowindow = new kakao.maps.InfoWindow({
+//         content : positions[i].content,
+//         removable : iwRemoveable,
+//     });
+    marker.setMap(map);
+//     kakao.maps.event.addListener(marker,'click',clickListener(map,marker,infowindow))
+
+//     function clickListener(map,marker,infowindow){
+//         return function(){
+//             infowindow.open(map, marker,infowindow);
+//         };
+//     }
+//     kakao.maps.event.addListener(map, 'click', function() {
+//        infowindow.close();
+//     });
+///
 
     // kakao.maps.event.addListener(marker, 'click', clickListener(map,marker,infowindows));
     //마커클릭시 반응
@@ -453,10 +471,7 @@ for (var i = 0; i < positions.length; i ++) {
     // }
 
     // 클릭된 마커를 현재 클릭된 마커 객체로 설정합니다
-
-
-//정보창 띄우기
-
+    };
 
     </script>
 </body>
