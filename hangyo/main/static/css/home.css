@@ -178,7 +178,7 @@ body{
     opacity: 0.5;
 }
 
-.checkbalance, .resetinfo { 
+.checkbalance, .resetinfo, .report { 
     position: absolute;
     top: 0;
     left: 0;
@@ -187,7 +187,7 @@ body{
     height: 100vh;
     background-color: rgba(0, 0, 0, 0.5); 
     opacity: 0;
-    z-index: 2;
+    z-index: 3;
     visibility: hidden;
     /* transform: scale(1.1);
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;  */
@@ -387,6 +387,8 @@ input{
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
 }
 
+/* 팝업-가게정보 */
+
 /* .storeinfo {
     width: 100%;
     height: 25%;
@@ -415,7 +417,7 @@ input{
     max-width: 1024px;
     background-color: rgba(0, 0, 0, 0); 
     opacity: 0; 
-    z-index: 1000;
+    z-index: 2;
     visibility: hidden;
     opacity: 1; 
     visibility: visible; 
@@ -621,3 +623,30 @@ input{
 #pagination {margin:10px auto;text-align: center;}
 #pagination a {display:inline-block;margin-right:10px;}
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
+
+/* 팝업-제보하기 */
+
+.popupbox_report { 
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    width: 350px;
+    height: 40%;
+    background: #FFFFFF 0% 0% no-repeat padding-box;
+    box-shadow: 0.5rem 0.5rem 0.5rem #00000029;
+    opacity: 1;
+}
+
+#reportbutton{
+    width: 80%;
+    height: 40%;
+    display: flex;
+}
+
+.pop-report{
+    opacity: 1; 
+    visibility: visible; 
+    transform: scale(1.0); 
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
+}
