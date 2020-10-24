@@ -189,7 +189,6 @@
     
 
     <script src="{% static 'js/map.js' %}"></script>
-    <!-- <script src="{% static 'js/search' %}"></script> -->
     <script src="{% static 'js/popup.js' %}"></script>
 
     <!-- 지도 -->
@@ -203,7 +202,7 @@ var options = {
 // public static final MapView.CurrentLocationTrackingMode TrackingModeOnWithHeading
 var map = new kakao.maps.Map(container, options);
 
-// 추가
+// --검색--
 
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places();
@@ -217,7 +216,8 @@ var keyword = document.getElementById('keyword').value;
 // 버튼 눌러야 검색함수 실행될 수 있도록 버튼을 불러옵니다
 var search_btn = document.querySelector("#search_btn");
 search_btn.addEventListener('click',function(searchPlaces){
-
+});
+search_btn.addEventListener('click',function(searchlocal){
 });
 
 
@@ -232,21 +232,22 @@ function searchPlaces() {
     }
 
     // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-    ps.keywordSearch( keyword, placesSearchCB); 
+    ps.keywordSearch(keyword, placesSearchCB); 
 }   
 
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data, status) {
     if (status === kakao.maps.services.Status.OK) {
-
+        document.getElementById('keyword').value = null;
         var bounds = new kakao.maps.LatLngBounds();
         for (var i=0; i<5; i++) {
-            // displaySearchMarker(data[i]);
             bounds.extend(new kakao.maps.LatLng(data[i].y, data[i].x));
         }
         map.setBounds(bounds);
         document.getElementById("center_lat").value = map.getCenter().getLat();
         document.getElementById("center_lng").value = map.getCenter().getLng();
+        // ----
+        
         return;
 
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
@@ -263,14 +264,14 @@ function placesSearchCB(data, status) {
 }
 
 
-// 추가 끝
+
+// --검색 끝--
 
 // 검색창 옆 현재위치 표시
-
-//현재중심좌표 가져옴
+// 현재중심좌표 가져옴
 // var center = map.getCenter();
-kakao.maps.event.addListener(map,'click',function(mouseEvent){
-    var center = mouseEvent.latLng;
+kakao.maps.event.addListener(map,'center_changed',function(){
+    var center = map.getCenter();
     var geocoder = new kakao.maps.services.Geocoder();
 
 var coord = new kakao.maps.LatLng(center.getLat(),center.getLng());
