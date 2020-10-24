@@ -387,7 +387,7 @@ input{
     transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
 }
 
-.storeinfo {
+/* .storeinfo {
     width: 100%;
     height: 25%;
     max-width: 1024px;
@@ -398,7 +398,7 @@ input{
     opacity: 0;
     transition: all 0.25s ease-in-out;
     z-index: 1;
-}
+} */
 
 .storeinfo.open {
   opacity: 1;
@@ -408,14 +408,14 @@ input{
 .storeinfo{
     position: absolute;
     display: inline-block;
-    bottom: 0;
+    bottom: 210px;
     left: 0;
     width: 100vw;
     height: 100px;
     max-width: 1024px;
     background-color: rgba(0, 0, 0, 0); 
     opacity: 0; 
-    z-index: 0;
+    z-index: 1000;
     visibility: hidden;
     opacity: 1; 
     visibility: visible; 
