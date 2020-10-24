@@ -556,16 +556,36 @@ for (var i = 0; i < positions.length; i ++) {
         image: markerImage, 
         clickable: true
     });
+    var infoPosition = new kakao.maps.
 
-    kakao.maps.event.addListener(marker, 'click',function(clickMarkerImage){
-        $('.storeinfo').toggleClass('open');
-        if (!selectedMarker||selectedMarker !==marker){
-            !!selectedMarker && selectedMarker.setImage(selectedMarker.markerImage);
-            marker.setImage(clickMarkerImage);
-        }
-        selectedMarker = marker;
-        return false;
-        });
+   var iwRemoveable = true; // true일 때 X버튼 생성
+    // 인포윈도우를 생성
+    var infowindow = new kakao.maps.InfoWindow({
+        content : positions[i].content,
+        removable : iwRemoveable,
+        position : infoPosition,
+    });
+    marker.setMap(map);
+    kakao.maps.event.addListener(marker,'click',clickListener(map,marker,infowindow))
+}
+    function clickListener(map,marker,infowindow){
+        return function(){
+            infowindow.open(map, marker,infowindow);
+        };
+    }
+    kakao.maps.event.addListener(map, 'click', function() {
+       infowindow.close();
+    });
+
+        // kakao.maps.event.addListener(marker, 'click',function(clickMarkerImage){
+    //     $('.storeinfo').toggleClass('open');
+    //     if (!selectedMarker||selectedMarker !==marker){
+    //         !!selectedMarker && selectedMarker.setImage(selectedMarker.markerImage);
+    //         marker.setImage(clickMarkerImage);
+    //     }
+    //     selectedMarker = marker;
+    //     return false;
+    //     });
 
     // var overlay = new kakao.maps.CustomOverlay({
     //     content: positions[i].content,
@@ -573,25 +593,8 @@ for (var i = 0; i < positions.length; i ++) {
     //     position: 
     // });
 
-///
-//    var iwRemoveable = true; // true일 때 X버튼 생성
-//     // 인포윈도우를 생성
-//     var infowindow = new kakao.maps.InfoWindow({
-//         content : positions[i].content,
-//         removable : iwRemoveable,
-//     });
-    marker.setMap(map);
-//     kakao.maps.event.addListener(marker,'click',clickListener(map,marker,infowindow))
 
-//     function clickListener(map,marker,infowindow){
-//         return function(){
-//             infowindow.open(map, marker,infowindow);
-//         };
-//     }
-//     kakao.maps.event.addListener(map, 'click', function() {
-//        infowindow.close();
-//     });
-///
+
 
     // kakao.maps.event.addListener(marker, 'click', clickListener(map,marker,infowindows));
     //마커클릭시 반응
@@ -609,16 +612,7 @@ for (var i = 0; i < positions.length; i ++) {
     // }
 
     // 클릭된 마커를 현재 클릭된 마커 객체로 설정합니다
-    };
-
-
-
-
-
-//정보창 띄우기
-
-
-
+    
 
 
     </script>
