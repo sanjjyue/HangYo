@@ -56,3 +56,21 @@ var btn_storeinfo = document.querySelector(".btn_storeinfo");
 
 // btn_storeinfo.addEventListener("click", toggle_storeinfo);
 // window.addEventListener("click", btn_storeinfo_OnClick);
+
+// 제보하기
+
+var report = document.querySelector(".report");
+var btn_report = document.querySelector(".btn_report");
+
+function toggle_report(){
+    report.classList.toggle("pop-report");
+}
+
+function btn_report_OnClick(event) {
+    if (event.target === report) {
+        toggle_report();
+    }
+}
+
+btn_report.addEventListener("click", toggle_report);
+window.addEventListener("click", btn_report_OnClick);
