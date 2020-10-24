@@ -418,7 +418,6 @@ for (var i = 0; i < positions.length; i ++) {
         image: markerImage, 
         clickable: true
     });
-    var infoPosition = new kakao.maps.
 
    var iwRemoveable = true; // true일 때 X버튼 생성
     // 인포윈도우를 생성
@@ -439,15 +438,15 @@ for (var i = 0; i < positions.length; i ++) {
        infowindow.close();
     });
 
-    kakao.maps.event.addListener(marker, 'click',function(clickMarkerImage){
-        $('.storeinfo').toggleClass('open');
-        if (!selectedMarker||selectedMarker !==marker){
-            selectedMarker && selectedMarker.setImage(selectedMarker.markerImage);
-            marker.setImage(clickMarkerImage);
-        }
-        selectedMarker = marker;
-        return false;
-        });
+    // kakao.maps.event.addListener(marker, 'click',function(clickMarkerImage){
+    //     $('.storeinfo').toggleClass('open');
+    //     if (!selectedMarker||selectedMarker !==marker){
+    //         selectedMarker && selectedMarker.setImage(selectedMarker.markerImage);
+    //         marker.setImage(clickMarkerImage);
+    //     }
+    //     selectedMarker = marker;
+    //     return false;
+    //     });
 
     // var overlay = new kakao.maps.CustomOverlay({
     //     content: positions[i].content,
