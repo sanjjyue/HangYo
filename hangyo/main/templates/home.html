@@ -179,7 +179,8 @@
                                                                             <div class="i_report" id="storeicon"> 
                                                                                 <img src="{% static 'image/siren.png' %}"> 
                                                                                 </div> 
-                                                                                <div id = "btnname">제보하기</div> 
+                                                                                <div id = "btnname">제보하기</div>
+                                                                              
                                                                                 </button> 
                                                                                 </div> 
                                                                                 </div>  
@@ -188,12 +189,19 @@
     <div class="report">
         <div class="popupbox_report">
             제보하기 팝업창
-            <button class="closedstore" id="reportbutton" type="button"> 
+            <form method="POST">
+                {% csrf_token %}
+                {{contentform.as_p}}
+                <input type="submit">
+            </form>
+
+            
+            <!-- <button class="closedstore" id="reportbutton" type="button"> 
                 폐업
             </button>
             <button class="hate" id="reportbutton" type="button"> 
                 불친절
-            </button>
+            </button> -->
         </div>
     </div>
 
