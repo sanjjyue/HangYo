@@ -10,4 +10,5 @@ class Stores(models.Model):
     longitude = models.FloatField(default=0)
     # 경도
     Latitude = models.FloatField(default=0)
-    # 위도
+    # 위도0..
+    idx = models.CharField(max_length=20)

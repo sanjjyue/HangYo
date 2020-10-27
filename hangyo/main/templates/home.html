@@ -122,7 +122,6 @@
             <div class="bar2" ></div>  
             <div class="store">  
                 <div class="storename">  
-                    {{i.store_name}}  
                 </div> 
                 <div class="storecategory-box"> 
                     <div class="storecategory"> 
@@ -136,16 +135,14 @@
                                 <img src="{% static 'image/geo.png' %}"> 
                                 </div> 
                                 <div class="storeloca"> 
-                                    {{i.location}} 
                                     </div> 
-                                    </div> 
+                         </div> 
     
                                     <div class="storenumber-box"> 
                                         <div class="i_storenumber" id="storeinfoicon"> 
                                             <img src="{% static 'image/page-2.png' %}"> 
                                             </div> 
                                             <div class="storenumber"> 
-                                                {{i.phone_num}} 
                                                 </div> 
                                                 </div> 
     
@@ -368,8 +365,10 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 var positions = [
     {% for i in take_all_info %}
     {
-    content: ''
-    , 
+    content: '<div>{{i.store_name}}</div>', 
+    phone_num: '<div>{{i.phone_num}}</div>',
+    location: '<div>{{i.location}}<div>',
+    id: '{{i.idx}}',
     latlng: new kakao.maps.LatLng({{i.Latitude}}, {{i.longitude}})
     },
     {% endfor %} 
@@ -412,33 +411,46 @@ var positions = [
 
 
 var selectedMarker = null;
-var infoPosition = null;
 console.log(positions)
+
 // 마커 생성
 for (var i = 0; i < positions.length; i ++) {
     var marker = new kakao.maps.Marker({
         position: positions[i].latlng, 
         image: markerImage, 
-        clickable: true
+        clickable: true,
+        id : i,
     });
-
-   var iwRemoveable = true; // true일 때 X버튼 생성
-    // 인포윈도우를 생성
-    var infowindow = new kakao.maps.InfoWindow({
-        content : positions[i].content,
-        removable : iwRemoveable,
-        position : infoPosition,
-    });
+    // console.log(marker)
+    // marker.id = i
     marker.setMap(map);
-    kakao.maps.event.addListener(marker,'click',clickListener(map,marker,infowindow))
+    // 마커 클릭 시 정보창 생성
+
+
+    kakao.maps.event.addListener(marker, 'click',function(clickMarkerImage){
+        console.log("marker :", marker)
+        console.log("markerImage :", clickMarkerImage)
+        console.log("marker.id", marker.id)
+        $('.storeinfo').toggleClass('open');
+        if (!selectedMarker||selectedMarker !==marker){
+            selectedMarker && selectedMarker.setImage(selectedMarker.markerImage);
+            marker.setImage(clickMarkerImage);
+        }
+        // var targetStore = event.target.id;
+        // console.log(event.target.id)
+        selectedMarker = marker;
+        // var contents = positions[id].content;
+        // var storeloca = positions[id].location;
+        // var storenumber = positions[id].phone_num;
+        // document.querySelector('.storename').innerHTML = contents;
+        // document.querySelector('.storenumber').innerHTML = storenumber;
+        // document.querySelector('.storeloca').innerHTML = storeloca;
+        return false;
+        });
 }
-    function clickListener(map,marker,infowindow){
-        return function(){
-            infowindow.open(map, marker,infowindow);
-        };
-    }
-    kakao.maps.event.addListener(map, 'click', function() {
-       infowindow.close();
+
+    kakao.maps.event.addListener(map, 'click', function(mouseEvent) {
+        $('.storeinfo.open').removeClass('open');
     });
 
     // kakao.maps.event.addListener(marker, 'click',function(clickMarkerImage){
