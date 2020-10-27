@@ -20,6 +20,6 @@ from main.views import mainpage
 
 urlpatterns = [
     path('admin/', admin.site.urls),
-    path('',mainpage),
+    path('',mainpage, name = 'mainpage'),
 ]
 #test
