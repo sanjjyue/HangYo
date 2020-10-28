@@ -25,7 +25,7 @@
                             <button class = "search-button" id="search_btn" type="submit">
                                 <img class="magnifying-glass" src="{% static 'image/magnifying-glass.png' %}" >
                             </button> 
-                        </div> 
+                        </div>   
                     </form>
                     <!-- <ul id="placesList"></ul>
                     <div id="pagination"></div> -->
@@ -70,6 +70,71 @@
                 </div>
             </button>
         </div>
+
+            <!-- 가게 정보 팝업창 -->
+    <div class="storeinfo">
+        <div class="popupbox-storeinfo">
+
+            <div class="bar1" ></div>  
+            <div class="bar2" ></div>
+    
+            <div class="store">
+                <div class="storename">  
+                    {{i.store_name}}  
+                </div>
+                <div class="storecategory-box"> 
+                    <div class="storecategory"> 
+                            {{i.store_type}}
+                        </div> 
+                    </div> 
+                </div> 
+    
+                <div class="storeloca-box"> 
+                    <div class="storeinfoicon" id="i_storeloca"> 
+                        <img src="{% static 'image/geo.png' %}"> 
+                    </div>   
+                    <div class="storeloca"> 
+                        {{i.location}} 
+                    </div> 
+                </div> 
+    
+                <div class="storenumber-box"> 
+                    <div class="storeinfoicon" id="i_storenumber"> 
+                        <img src="{% static 'image/page-2.png' %}"> 
+                    </div> 
+                    <div class="storenumber"> 
+                        {{i.phone_num}} 
+                    </div> 
+                </div> 
+    
+                <div class="storeinfo-btn-box">
+
+                    <form id="storebutton" action="https://map.kakao.com/link/to/{{i.store_name}},{{i.Latitude}},{{i.longitude}}" target="_blank" type="submit">
+                        <button class="btn_directions">
+                            <div class="storebtnicon" id="i_directions">
+                                <img src="{% static 'image/junction.png' %}"> 
+                            </div>
+                            <div class = "btnname">길찾기</div>
+                        </button>
+                    </form>
+                
+                    <button class="btn_call" id="storebutton" onclick="location.href='tel:{{i.phone_num}}'">
+                        <div class="storebtnicon" id="i_call"> 
+                            <img src="{% static 'image/page-1.png' %}"> 
+                        </div>
+                        <div class = "btnname">전화연결</div>
+                    </button>
+                                                                                
+                    <button class="btn_report" id="storebutton"> 
+                        <div class="storebtnicon" id="i_report"> 
+                            <img src="{% static 'image/siren.png' %}"> 
+                        </div> 
+                        <div class = "btnname">제보하기</div> 
+                    </button> 
+                </div>
+            </div>
+        </div>
+    </div>
     </div>
     
     <!-- 잔액 확인 팝업창 -->
@@ -115,92 +180,7 @@
         </div>
     </div>
 
-    <!-- 가게 정보 팝업창 -->
-    <div class="storeinfo">
-        <div class="popupbox-storeinfo">
 
-            <div class="bar1" ></div>  
-            <div class="bar2" ></div>
-    
-            <div class="store">
-                <div class="storename">  
-<<<<<<< HEAD
-                </div> 
-=======
-                    {{i.store_name}}  
-                </div>
->>>>>>> 89d9c96cdfb507d2f356ff46e482d3feb0b81fe9
-                <div class="storecategory-box"> 
-                    <div class="storecategory"> 
-                            {{i.store_type}}
-                        </div> 
-                    </div> 
-                </div> 
-    
-<<<<<<< HEAD
-                        <div class="storeloca-box"> 
-                            <div class="i_storeloca" id="storeinfoicon"> 
-                                <img src="{% static 'image/geo.png' %}"> 
-                                </div> 
-                                <div class="storeloca"> 
-                                    </div> 
-                         </div> 
-    
-                                    <div class="storenumber-box"> 
-                                        <div class="i_storenumber" id="storeinfoicon"> 
-                                            <img src="{% static 'image/page-2.png' %}"> 
-                                            </div> 
-                                            <div class="storenumber"> 
-                                                </div> 
-                                                </div> 
-=======
-                <div class="storeloca-box"> 
-                    <div class="storeinfoicon" id="i_storeloca"> 
-                        <img src="{% static 'image/geo.png' %}"> 
-                    </div>   
-                    <div class="storeloca"> 
-                        {{i.location}} 
-                    </div> 
-                </div> 
->>>>>>> 89d9c96cdfb507d2f356ff46e482d3feb0b81fe9
-    
-                <div class="storenumber-box"> 
-                    <div class="storeinfoicon" id="i_storenumber"> 
-                        <img src="{% static 'image/page-2.png' %}"> 
-                    </div> 
-                    <div class="storenumber"> 
-                        {{i.phone_num}} 
-                    </div> 
-                </div> 
-    
-                <div class="storeinfo-btn-box">
-
-                    <form id="storebutton" action="https://map.kakao.com/link/to/{{i.store_name}},{{i.Latitude}},{{i.longitude}}" target="_blank" type="submit">
-                        <button class="btn_directions">
-                            <div class="storebtnicon" id="i_directions">
-                                <img src="{% static 'image/junction.png' %}"> 
-                            </div>
-                            <div class = "btnname">길찾기</div>
-                        </button>
-                    </form>
-                
-                    <button class="btn_call" id="storebutton" onclick="location.href='tel:{{i.phone_num}}'">
-                        <div class="storebtnicon" id="i_call"> 
-                            <img src="{% static 'image/page-1.png' %}"> 
-                        </div>
-                        <div class = "btnname">전화연결</div>
-                    </button>
-                                                                                
-                    <button class="btn_report" id="storebutton"> 
-                        <div class="storebtnicon" id="i_report"> 
-                            <img src="{% static 'image/siren.png' %}"> 
-                        </div> 
-                        <div class = "btnname">제보하기</div> 
-                    </button> 
-                </div>
-            </div>
-        </div>
-    </div>
 
     <!-- 제보하기 팝업창 -->
     <div class="report">
@@ -304,7 +284,6 @@ function placesSearchCB(data, status) {
 
 // 검색창 옆 현재위치 표시
 // 현재중심좌표 가져옴
-// var center = map.getCenter();
 kakao.maps.event.addListener(map,'center_changed',function(){
     var center = map.getCenter();
     var geocoder = new kakao.maps.services.Geocoder();
@@ -461,7 +440,7 @@ for (var i = 0; i < positions.length; i ++) {
         id : i,
     });
 
-    marker.normalImage = markerImage;
+    // marker.normalImage = markerImage;
     // console.log(marker)
     // marker.id = i
     marker.setMap(map);
@@ -478,7 +457,7 @@ for (var i = 0; i < positions.length; i ++) {
             marker.setImage(markerImage_click);
         }
         selectedMarker = marker;
-        console.log("markerid:",markerImage)
+        // console.log("markerid:",markerImage)
         // var targetStore = event.target.id;
         // console.log(event.target.id)
         
