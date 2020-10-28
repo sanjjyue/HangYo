@@ -13,14 +13,16 @@ class Stores(models.Model):
     # 위도
 
 TYPE_CHOICES = (
+    ('','제보유형을 선택해 주세요'),
+    ('비가맹점', '비가맹점'),
     ('폐업', '폐업'),
     ('불친절', '불친절')
 )
 
-class Report(models.Model):
-    type = models.CharField("제보 유형", max_length=100, choices=TYPE_CHOICES)
+class Report(models.Model):    
     stores = models.ForeignKey(Stores, verbose_name="관련 가게", on_delete=models.CASCADE)
-    content = models.CharField('제보 내용', max_length=300)  
+    type = models.CharField("제보 유형", max_length=100, choices=TYPE_CHOICES)
+    content = models.CharField('제보 내용', max_length=300)
 
     def __str__(self):
         return f'[{self.stores.store_name}]의 제보내용 : {self.content[:10]}...' 
