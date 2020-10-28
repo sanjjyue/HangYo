@@ -398,13 +398,10 @@ input{
     z-index: 1;
 } */
 
-.storeinfo.open {
-  opacity: 1;
-  visibility: visible;
-}
+
 
 .storeinfo{
-    position: absolute;
+    /* position: absolute;
     display: inline-block;
     bottom: 210px;
     left: 0;
@@ -418,16 +415,31 @@ input{
     opacity: 1; 
     visibility: visible; 
     transform: scale(1.0); 
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
+    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;  */
+    width: 100%;
+    height: 25%;
+    max-width: 1024px;
+    position: absolute;
+    /* position: fixed; */
+    bottom: 64px;
+    left: 0;
+    visibility: hidden;
+    opacity: 0;
+    transition: all 0.25s ease-in-out;
+    z-index: 1;
 }
 
+.storeinfo.open {
+    opacity: 1;
+    visibility: visible;
+  }
 .popupbox-storeinfo{
     position: absolute;
     left: 0;
     top: 0;
     max-width: 1024px;
     width: 100%;
-    height: 250px;
+    height: 100%;
     display: flex;
     flex-direction: column;
     /* text-align: left; */
@@ -485,7 +497,7 @@ input{
     letter-spacing: -0.34px;
     color: #1E1B1B;
     opacity: 1;
-}
+} */
 
 .storecategory-box{
     position: absolute;
@@ -540,7 +552,7 @@ input{
     letter-spacing: -0.21px;
     color: #100F0F;
     opacity: 0.69;
-}
+} */
 
 .storeinfoicon{
     width: auto;
