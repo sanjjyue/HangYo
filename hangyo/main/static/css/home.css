@@ -4,16 +4,15 @@ body{
     max-width: 1024px;
     width: 100vw;
     height: 100vh;
-    text-align: center; 
-
     position: relative;
+    text-align: center;
 }
 
-.mainbox {
+/* .mainbox {
     width: 100%;
     height: 100%;
     overflow: hidden;
-}
+} */
 
 .top-container{
     position: absolute;
@@ -108,7 +107,6 @@ body{
     background-color: #CA2626;
 } */
 
-
 .search-loca{
     position: absolute;
     top: 5px;
@@ -121,9 +119,6 @@ body{
     border: 0;
     outline: 0;
 }
-
-
-
 
 #map {
     position: absolute;
@@ -194,13 +189,13 @@ body{
 }
 
 /* 팝업-잔액확인 */
-.popupbox_checkbalance { 
+.popupbox-checkbalance { 
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    width: 350px;
-    height: 40%;
+    width: 300px;
+    height: 250px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0.5rem 0.5rem 0.5rem #00000029;
     border-radius: 2rem;
@@ -228,7 +223,7 @@ body{
 
 .titlebox_checkbalance{
     position: absolute;
-    top: 30%;
+    top: 28%;
     left: 0;
     width: 100%;
 }
@@ -251,13 +246,13 @@ body{
 .content{
     padding: 0% 12%;
     text-align: center;
-    font: normal normal bold 1.2em/1.5em Agency FB;
+    font: normal normal bold 1.1em/1.5em Agency FB;
     letter-spacing: -0.6px;
     color: #464646DB;
     opacity: 1;
 }
 
-#btn_iknow{
+.btn_iknow{
     position: absolute;
     bottom: 0;
     left: 0;
@@ -281,13 +276,13 @@ body{
 
 /* 팝업-정보재설정 */
 
-.popupbox_resetinfo { 
+.popupbox-resetinfo { 
     position: absolute;
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    width: 320px;
-    height: 55%;
+    width: 300px;
+    height: 350px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0.5rem 0.5rem 0.5rem #00000029;
     border-radius: 2rem;
@@ -330,17 +325,18 @@ body{
 input{
     width: 70%;
     padding: 0.2em;
-    border: none;
-    font: normal normal bold 1em/1.5em NanumSquare_ac;
-    letter-spacing: -0.35px;
-    opacity: 1;
+    border: 0;
+    outline: 0;
 }
 
 .input-info{
     margin: 2px 0;
-    border: none;
+    border: 0;
     outline: 0;
     border-bottom: 1px solid #707070;
+    font: normal normal bold 1em/1.5em NanumSquare_ac;
+    letter-spacing: -0.35px;
+    opacity: 1;
 }
 
 ::placeholder{
@@ -349,7 +345,7 @@ input{
 
 .notebox{
     position: absolute;
-    top: 60%;
+    top: 63%;
     left: 0;
     width: 90%;
     padding: 5%;
@@ -365,7 +361,7 @@ input{
     opacity: 0.6;
 }
 
-#btn_saveinfo{
+.btn_saveinfo{
     position: absolute;
     bottom: 0;
     left: 0;
@@ -433,11 +429,15 @@ input{
     z-index: 1;
 }
 
+<<<<<<< HEAD
 .storeinfo.open {
     opacity: 1;
     visibility: visible;
   }
 .popupbox_storeinfo{
+=======
+.popupbox-storeinfo{
+>>>>>>> 89d9c96cdfb507d2f356ff46e482d3feb0b81fe9
     position: absolute;
     left: 0;
     top: 0;
@@ -488,7 +488,12 @@ input{
     width: 100%;
     height: 40px;
 }
+<<<<<<< HEAD
 /* .storename{
+=======
+
+.storename{
+>>>>>>> 89d9c96cdfb507d2f356ff46e482d3feb0b81fe9
     position: absolute;
     left: 20px;
     /* top: 40px; */
@@ -525,6 +530,7 @@ input{
     color: #F0F8F3;
     opacity: 1;
 }
+
 .storeloca-box{
     position: absolute;
     left: 0;
@@ -537,6 +543,7 @@ input{
     text-align: left;
 }
 
+<<<<<<< HEAD
 /* .storeloca{
     text-align: left;
     font: normal normal 800 14px/26px NanumSquare_ac;
@@ -545,6 +552,8 @@ input{
     opacity: 0.69;
 } */
 
+=======
+>>>>>>> 89d9c96cdfb507d2f356ff46e482d3feb0b81fe9
 .storenumber-box{
     position: absolute;
     left: 0;
@@ -556,7 +565,11 @@ input{
     /* border: 1px red dotted; */
 }
 
+<<<<<<< HEAD
 /* .storenumber{
+=======
+.storeloca, .storenumber{
+>>>>>>> 89d9c96cdfb507d2f356ff46e482d3feb0b81fe9
     text-align: left;
     font: normal normal 800 14px/26px NanumSquare_ac;
     letter-spacing: -0.21px;
@@ -564,58 +577,152 @@ input{
     opacity: 0.69;
 } */
 
-#storeinfoicon{
+.storeinfoicon{
     width: auto;
     height: 25px;
-    /* border: 1px black dotted; */
     margin: 0 20px;
 }
+
 .storeinfo-btn-box{
     position: absolute;
-    /* border: 1px red dotted; */
     left: 0;
     bottom: 10px;
     width: 100%;
     height: 80px;
     display: flex;
-    /* border-spacing: 5%; */
     flex-direction: row;
 }
 
 #storebutton{
-    border: 1px black dotted;
     margin: 5px;
+    padding: 0;
     border: 0;
-    /* border: 1px black dotted; */
     outline: 0;
     width: 33%;
+    font: normal normal bold 15px/26px NanumSquare_ac;
+    letter-spacing: -0.23px;
     background: #F7F7F7 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 13px;
     opacity: 1;
+    cursor: pointer;
 }
 
+.btn_directions{
+    padding: 0;
+    border: 0;
+    outline: 0;
+    width: 100%;
+    height: 100%;
+    font: normal normal bold 15px/26px NanumSquare_ac;
+    letter-spacing: -0.23px;
+    background: #F7F7F7 0% 0% no-repeat padding-box;
+    /* box-shadow: 0px 3px 6px #00000029; */
+    border-radius: 13px;
+    opacity: 1;
+    cursor: pointer;
+}
 
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 
 /* 팝업-제보하기 */
-
-.popupbox_report { 
+.popupbox-report{
     position: absolute;
     top: 50%;
     left: 50%;
-    transform: translate(-50%,-50%);
-    width: 350px;
-    height: 40%;
+    transform: translate(-50%, -50%);
+    width: 300px;
+    height: 250px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0.5rem 0.5rem 0.5rem #00000029;
+    border-radius: 2rem;
     opacity: 1;
 }
 
-#reportbutton{
-    width: 80%;
-    height: 40%;
-    display: flex;
+p{
+    margin: 0;
+    padding: 0;
+}
+
+#id_stores, #id_type, #id_content{
+    outline: 0;
+}
+
+#report-storesname-box{
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 60px;
+    text-align: center;
+    border-bottom: 2px grey solid;
+}
+
+#report-storesname{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 100%;
+    font: normal normal 800 20px/26px NanumSquare_ac;
+    letter-spacing: -0.34px;
+    color: #1E1B1B;
+    opacity: 1;
+
+}
+
+#report-type{
+    position: absolute;
+    top: 75px;
+    left: 0;
+    width: 100%;
+    height: 40px;
+}
+
+#id_type{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 90%;
+    height: 100%;
+    border: 2px gray solid;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+#report-content{
+    position: absolute;
+    top: 125px;
+    left: 0;
+    width: 100%;
+    height: 60px;
+}
+
+#id_content{
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 266px;
+    height: 100%;
+    border: 2px gray solid;
+    border-radius: 5px;
+    padding: 0;
+}
+
+.btn_submit{
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    height: 20%;
+    background: #6FDFF1 0% 0% no-repeat padding-box;
+    font: normal normal bold 1em/1.5em NanumSquare_ac;
+    letter-spacing: -0.35px;
+    opacity: 1;
+    border-radius: 0 0 2rem 2rem;
+    cursor: pointer;
 }
 
 .pop-report{
