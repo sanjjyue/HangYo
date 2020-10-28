@@ -74,7 +74,7 @@
     
     <!-- 잔액 확인 팝업창 -->
     <div class="checkbalance" id="modal">
-        <div class="popupbox-checkbalance">
+        <div class="popupbox_checkbalance">
             <div class="iconbox">
                 <img src="{% static 'image/coin.png' %}">
             </div>
@@ -87,13 +87,13 @@
                     김태훈님의 현재 계좌 잔액은 $ 999,999원 입니다.
                 </div>
             </div>
-            <input type="button" class="btn_iknow" value="알겠어요!">
+            <input type="button" id="btn_iknow" class="btn_iknow" value="알겠어요!">
         </div>
     </div>    
 
     <!-- 정보 재설정 팝업창 -->
     <div class="resetinfo">
-        <div class="popupbox-resetinfo">
+        <div class="popupbox_resetinfo">
             <div class="iconbox">
                 <img src="{% static 'image/Lovepik.png' %}">
             </div>
@@ -111,94 +111,98 @@
                     ※ 본 정보는 잔액확인 및 위치설정 등 사용자 편의성을 위해서만 사용됩니다.
                 </div>
             </div>
-            <input type="button" class="btn_saveinfo" value="확인">
+            <input type="button" id="btn_saveinfo" class="btn_saveinfo" value="확인">
         </div>
     </div>
 
     <!-- 가게 정보 팝업창 -->
     <div class="storeinfo">
-        <div class="popupbox-storeinfo">
-
+        <div class="popupbox_storeinfo">  
             <div class="bar1" ></div>  
-            <div class="bar2" ></div>
-    
-            <div class="store">
+            <div class="bar2" ></div>  
+            <div class="store">  
                 <div class="storename">  
                     {{i.store_name}}  
-                </div>
+                </div> 
                 <div class="storecategory-box"> 
                     <div class="storecategory"> 
-                            {{i.store_type}}
+                        {{i.store_type}}
                         </div> 
-                    </div> 
-                </div> 
+                        </div> 
+                        </div> 
     
-                <div class="storeloca-box"> 
-                    <div class="storeinfoicon" id="i_storeloca"> 
-                        <img src="{% static 'image/geo.png' %}"> 
-                    </div>   
-                    <div class="storeloca"> 
-                        {{i.location}} 
-                    </div> 
-                </div> 
+                        <div class="storeloca-box"> 
+                            <div class="i_storeloca" id="storeinfoicon"> 
+                                <img src="{% static 'image/geo.png' %}"> 
+                                </div> 
+                                <div class="storeloca"> 
+                                    {{i.location}} 
+                                    </div> 
+                                    </div> 
     
-                <div class="storenumber-box"> 
-                    <div class="storeinfoicon" id="i_storenumber"> 
-                        <img src="{% static 'image/page-2.png' %}"> 
-                    </div> 
-                    <div class="storenumber"> 
-                        {{i.phone_num}} 
-                    </div> 
-                </div> 
+                                    <div class="storenumber-box"> 
+                                        <div class="i_storenumber" id="storeinfoicon"> 
+                                            <img src="{% static 'image/page-2.png' %}"> 
+                                            </div> 
+                                            <div class="storenumber"> 
+                                                {{i.phone_num}} 
+                                                </div> 
+                                                </div> 
     
-                <div class="storeinfo-btn-box">
-
-                    <form id="storebutton" action="https://map.kakao.com/link/to/{{i.store_name}},{{i.Latitude}},{{i.longitude}}" target="_blank" type="submit">
-                        <button class="btn_directions">
-                            <div class="storebtnicon" id="i_directions">
-                                <img src="{% static 'image/junction.png' %}"> 
-                            </div>
-                            <div class = "btnname">길찾기</div>
-                        </button>
-                    </form>
+                                                <div class="storenumber-box"> 
+                                                  <div class="i_storenumber" id="storeinfoicon"> 
+                                                    <img src="{% static 'image/page-2.png' %}"> 
+                                                    </div> 
+                                                    <div class="storenumber"> 
+                                                    {{i.phone_num}} 
+                                                    </div> 
+                                                    </div> 
+    
+                                                    <div class="storeinfo-btn-box"> 
+                                                        <button class="btn_directions" id="storebutton" type="button"> 
+                                                            <div class="i_directions" id="storeicon"> 
+                                                                <img src="{% static 'image/junction.png' %}"> 
+                                                                </div> 
+                                                                <form action="https://map.kakao.com/link/to/{{i.store_name}},{{i.Latitude}},{{i.longitude}}" target="_blank"> 
+                                                                    <input type="submit" value="길찾기">
+                                                                </form>
+                                                                </button> 
                 
-                    <button class="btn_call" id="storebutton" onclick="location.href='tel:{{i.phone_num}}'">
-                        <div class="storebtnicon" id="i_call"> 
-                            <img src="{% static 'image/page-1.png' %}"> 
-                        </div>
-                        <div class = "btnname">전화연결</div>
-                    </button>
+                                                                <button class="btn_call" id="storebutton"> 
+                                                                    <div class="i_call" id="storeicon"> 
+                                                                        <img src="{% static 'image/page-1.png' %}"> 
+                                                                        </div> 
+                                                                        <a href="tel:{{i.phone_num}}">전화연결</a>
+                                                                        </button> 
                                                                                 
-                    <button class="btn_report" id="storebutton"> 
-                        <div class="storebtnicon" id="i_report"> 
-                            <img src="{% static 'image/siren.png' %}"> 
-                        </div> 
-                        <div class = "btnname">제보하기</div> 
-                    </button> 
-                </div>
-            </div>
-        </div>
-    </div>
-
+                                                                        <button class="btn_report" id="storebutton"> 
+                                                                            <div class="i_report" id="storeicon"> 
+                                                                                <img src="{% static 'image/siren.png' %}"> 
+                                                                                </div> 
+                                                                                <div id = "btnname">제보하기</div>
+                                                                              
+                                                                                </button> 
+                                                                                </div> 
+                                                                                </div>  
+                                                                                </div>
     <!-- 제보하기 팝업창 -->
     <div class="report">
-        <form method="POST" class="popupbox-report">
-            {% csrf_token %}
-            <div id="report-storesname-box">
-                <p id="report-storesname">
-                    가게명 {{contentform.stores}}
-                </p>
-            </div>
-            <p id="report-type">
-                {{contentform.type}}
-            </p>
-            <p id="report-content">
-                {{contentform.content}}
-            </p>
-            <!-- <div class="report-btn-box"> -->
-            <input type="submit" class="btn_submit" id="btn_report_submit" value="제보하기">
-            <!-- </div> -->
-        </form>
+        <div class="popupbox_report">
+            제보하기 팝업창
+            <form method="POST">
+                {% csrf_token %}
+                {{contentform.as_p}}
+                <input type="submit">
+            </form>
+
+            
+            <!-- <button class="closedstore" id="reportbutton" type="button"> 
+                폐업
+            </button>
+            <button class="hate" id="reportbutton" type="button"> 
+                불친절
+            </button> -->
+        </div>
     </div>
 
     <script src="{% static 'js/map.js' %}"></script>
