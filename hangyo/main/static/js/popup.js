@@ -58,7 +58,6 @@ var btn_storeinfo = document.querySelector(".btn_storeinfo");
 // window.addEventListener("click", btn_storeinfo_OnClick);
 
 // 제보하기
-
 var report = document.querySelector(".report");
 var btn_report = document.querySelector(".btn_report");
 
