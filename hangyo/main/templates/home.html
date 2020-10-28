@@ -74,7 +74,7 @@
     
     <!-- 잔액 확인 팝업창 -->
     <div class="checkbalance" id="modal">
-        <div class="popupbox_checkbalance">
+        <div class="popupbox-checkbalance">
             <div class="iconbox">
                 <img src="{% static 'image/coin.png' %}">
             </div>
@@ -93,7 +93,7 @@
 
     <!-- 정보 재설정 팝업창 -->
     <div class="resetinfo">
-        <div class="popupbox_resetinfo">
+        <div class="popupbox-resetinfo">
             <div class="iconbox">
                 <img src="{% static 'image/Lovepik.png' %}">
             </div>
@@ -117,7 +117,7 @@
 
     <!-- 가게 정보 팝업창 -->
     <div class="storeinfo">
-        <div class="popupbox_storeinfo">
+        <div class="popupbox-storeinfo">
 
             <div class="bar1" ></div>  
             <div class="bar2" ></div>
@@ -134,7 +134,7 @@
                 </div> 
     
                 <div class="storeloca-box"> 
-                    <div class="i_storeloca" id="storeinfoicon"> 
+                    <div class="storeinfoicon" id="i_storeloca"> 
                         <img src="{% static 'image/geo.png' %}"> 
                     </div>   
                     <div class="storeloca"> 
@@ -143,7 +143,7 @@
                 </div> 
     
                 <div class="storenumber-box"> 
-                    <div class="i_storenumber" id="storeinfoicon"> 
+                    <div class="storeinfoicon" id="i_storenumber"> 
                         <img src="{% static 'image/page-2.png' %}"> 
                     </div> 
                     <div class="storenumber"> 
@@ -155,26 +155,25 @@
 
                     <form id="storebutton" action="https://map.kakao.com/link/to/{{i.store_name}},{{i.Latitude}},{{i.longitude}}" target="_blank" type="submit">
                         <button class="btn_directions">
-                            <div class="i_directions" id="storeicon"> 
+                            <div class="storebtnicon" id="i_directions">
                                 <img src="{% static 'image/junction.png' %}"> 
                             </div>
-                            <div id = "btnname">길찾기</div>
+                            <div class = "btnname">길찾기</div>
                         </button>
                     </form>
                 
                     <button class="btn_call" id="storebutton" onclick="location.href='tel:{{i.phone_num}}'">
-                        <div class="i_call" id="storeicon"> 
+                        <div class="storebtnicon" id="i_call"> 
                             <img src="{% static 'image/page-1.png' %}"> 
                         </div>
-                        <div id = "btnname">전화연결</div>
+                        <div class = "btnname">전화연결</div>
                     </button>
                                                                                 
-<<<<<<< HEAD
                     <button class="btn_report" id="storebutton"> 
-                        <div class="i_report" id="storeicon"> 
+                        <div class="storebtnicon" id="i_report"> 
                             <img src="{% static 'image/siren.png' %}"> 
                         </div> 
-                        <div id = "btnname">제보하기</div> 
+                        <div class = "btnname">제보하기</div> 
                     </button> 
                 </div>
             </div>
@@ -183,57 +182,23 @@
 
     <!-- 제보하기 팝업창 -->
     <div class="report">
-        <div class="popupbox_report">
-    
-            <div class="titlebox_report">
-                <div class="title">제보 사유 선택</div>
+        <form method="POST" class="popupbox-report">
+            {% csrf_token %}
+            <div id="report-storesname-box">
+                <p id="report-storesname">
+                    가게명 {{contentform.stores}}
+                </p>
             </div>
-    
-            <div class="report-btn-box">
-                <button class="closedstore" id="reportbutton" type="button"> 
-                    폐업
-                </button>
-        
-                <button class="notavailable" id="reportbutton" type="button">
-                    비가맹점
-                </button>
-
-                <button class="unkind" id="reportbutton" type="button">
-                    불친절
-                </button>
-            </div>
-        
-            <input type="button" class="btn_reportcancel" value="취소">
-=======
-                                                                        <button class="btn_report" id="storebutton"> 
-                                                                            <div class="i_report" id="storeicon"> 
-                                                                                <img src="{% static 'image/siren.png' %}"> 
-                                                                                </div> 
-                                                                                <div id = "btnname">제보하기</div>
-                                                                              
-                                                                                </button> 
-                                                                                </div> 
-                                                                                </div>  
-                                                                                </div>
-    <!-- 제보하기 팝업창 -->
-    <div class="report">
-        <div class="popupbox_report">
-            제보하기 팝업창
-            <form method="POST">
-                {% csrf_token %}
-                {{contentform.as_p}}
-                <input type="submit">
-            </form>
-
-            
-            <!-- <button class="closedstore" id="reportbutton" type="button"> 
-                폐업
-            </button>
-            <button class="hate" id="reportbutton" type="button"> 
-                불친절
-            </button> -->
->>>>>>> f99564926e76693ef0a63b9d9ecc1edc39b0ad0c
-        </div>
+            <p id="report-type">
+                {{contentform.type}}
+            </p>
+            <p id="report-content">
+                {{contentform.content}}
+            </p>
+            <!-- <div class="report-btn-box"> -->
+            <input type="submit" class="btn_submit" id="btn_report_submit" value="제보하기">
+            <!-- </div> -->
+        </form>
     </div>
 
     <script src="{% static 'js/map.js' %}"></script>
