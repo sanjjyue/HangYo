@@ -308,13 +308,13 @@ geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
 //마커 속성
 var imageSrc = "/static/image/marker_store.png",
     imageSize = new kakao.maps.Size(30 ,40), 
-    imageOption = {offset: new kakao.maps.Point(27, 69)}; //좌표랑 일치시킬 마커내의 좌표
+    imageOption = {offset: new kakao.maps.Point(0, 0)}; //좌표랑 일치시킬 마커내의 좌표
 var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
 
 //클릭시 마커속성
-var imageSrc_click = "/static/image/geo.png",
+var imageSrc_click = "/static/image/selected_marker.png",
     imageSize_click = new kakao.maps.Size(30 ,40), 
-    imageOption_click = {offset: new kakao.maps.Point(27, 69)}; //좌표랑 일치시킬 마커내의 좌표
+    imageOption_click = {offset: new kakao.maps.Point(0, 0)}; //좌표랑 일치시킬 마커내의 좌표
 var markerImage_click = new kakao.maps.MarkerImage(imageSrc_click, imageSize_click, imageOption_click)
 
 
@@ -386,7 +386,7 @@ var positions = [
     content: '<div>{{i.store_name}}</div>', 
     phone_num: '<div>{{i.phone_num}}</div>',
     location: '<div>{{i.location}}<div>',
-    id: '<div>{{i.idx}}</div>',
+    id: '{{i.idx}}',
     latlng: new kakao.maps.LatLng({{i.Latitude}}, {{i.longitude}})
     },
     {% endfor %} 
@@ -433,40 +433,41 @@ console.log(positions)
 
 // 마커 생성
 for (var i = 0; i < positions.length; i ++) {
+    addMarker(positions[i]);
+}
+
+function addMarker(position){
     var marker = new kakao.maps.Marker({
         position: positions[i].latlng, 
         image: markerImage, 
         clickable: true,
-        id : i,
+        // i = id,
     });
 
     // marker.normalImage = markerImage;
     // console.log(marker)
-    // marker.id = i
+    marker.id = i;
+    marker.markerImage = markerImage;
     marker.setMap(map);
     // 마커 클릭 시 정보창 생성
 
 
     kakao.maps.event.addListener(marker, 'click',function(markerImage_click){
-        // console.log("marker :", marker)
-        // console.log("markerImage :", clickMarkerImage)
-        // console.log("marker.id", marker.id)
         $('.storeinfo').toggleClass('open');
         if (!selectedMarker||selectedMarker !==marker){
             !!selectedMarker && selectedMarker.setImage(selectedMarker.markerImage);
             marker.setImage(markerImage_click);
         }
         selectedMarker = marker;
-        // console.log("markerid:",markerImage)
-        // var targetStore = event.target.id;
-        // console.log(event.target.id)
+        var id = this.id;
+        console.log(id);
         
-        // var contents = positions[id].content;
-        // var storeloca = positions[id].location;
-        // var storenumber = positions[id].phone_num;
-        // document.querySelector('.storename').innerHTML = contents;
-        // document.querySelector('.storenumber').innerHTML = storenumber;
-        // document.querySelector('.storeloca').innerHTML = storeloca;
+        var contents = positions[id].content;
+        var storeloca = positions[id].location;
+        var storenumber = positions[id].phone_num;
+        document.querySelector('.storename').innerHTML = contents;
+        document.querySelector('.storenumber').innerHTML = storenumber;
+        document.querySelector('.storeloca').innerHTML = storeloca;
         // return false;
         });
 }
@@ -475,41 +476,7 @@ for (var i = 0; i < positions.length; i ++) {
         $('.storeinfo.open').removeClass('open');
     });
 
-    // kakao.maps.event.addListener(marker, 'click',function(clickMarkerImage){
-    //     $('.storeinfo').toggleClass('open');
-    //     if (!selectedMarker||selectedMarker !==marker){
-    //         selectedMarker && selectedMarker.setImage(selectedMarker.markerImage);
-    //         marker.setImage(clickMarkerImage);
-    //     }
-    //     selectedMarker = marker;
-    //     return false;
-    //     });
-
-    // var overlay = new kakao.maps.CustomOverlay({
-    //     content: positions[i].content,
-    //     map: map,
-    //     position: 
-    // });
-
-
-
-
-    // kakao.maps.event.addListener(marker, 'click', clickListener(map,marker,infowindows));
-    //마커클릭시 반응
-
-    // // 클릭된 마커가 없고, click 마커가 클릭된 마커가 아니면
-    // // 마커의 이미지를 클릭 이미지로 변경합니다
-    // if (!selectedMarker || selectedMarker !== marker) {
-
-    //     // 클릭된 마커 객체가 null이 아니면
-    //     // 클릭된 마커의 이미지를 기본 이미지로 변경하고
-    //     !!selectedMarker && selectedMarker.setImage(selectedMarker.markerImage);
-
-    //     // 현재 클릭된 마커의 이미지는 클릭 이미지로 변경합니다
-    //     marker.setImage(markerImage_click);
-    // }
-
-    // 클릭된 마커를 현재 클릭된 마커 객체로 설정합니다
+    
 
     </script>
 </body>
