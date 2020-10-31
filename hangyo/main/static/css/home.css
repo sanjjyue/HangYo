@@ -385,44 +385,15 @@ input{
 
 /* 팝업-가게정보 */
 
-/* .storeinfo {
-    width: 100%;
-    height: 25%;
-    max-width: 1024px;
-    position: absolute;
-    bottom: 10%;
-    left: 0;
-    visibility: hidden;
-    opacity: 0;
-    transition: all 0.25s ease-in-out;
-    z-index: 1;
-} */
-
-
 
 .storeinfo{
-    /* position: absolute;
-    display: inline-block;
-    bottom: 210px;
-    left: 0;
-    width: 100vw;
-    height: 100px;
-    max-width: 1024px;
-    background-color: rgba(0, 0, 0, 0); 
-    opacity: 0; 
-    z-index: 2;
-    visibility: hidden;
-    opacity: 1; 
-    visibility: visible; 
-    transform: scale(1.0); 
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s;  */
+    position: absolute;
     width: 100%;
-    height: 25%;
+    height: 250px;
     max-width: 1024px;
     position: absolute;
-    /* position: fixed; */
-    bottom: 64px;
     left: 0;
+    bottom: 0;
     visibility: hidden;
     opacity: 0;
     transition: all 0.25s ease-in-out;
@@ -433,6 +404,7 @@ input{
     opacity: 1;
     visibility: visible;
   }
+
 .popupbox-storeinfo{
     position: absolute;
     left: 0;
@@ -442,11 +414,10 @@ input{
     height: 100%;
     display: flex;
     flex-direction: column;
-    /* text-align: left; */
     background: #F8F8F8 0% 0% no-repeat padding-box;
     box-shadow: 0px -4px 9px #00000029;
     opacity: 1;
-    border-radius: 10% 10% 0 0;
+    border-radius: 30px 30px 0 0;
 }
 
 .bar1{
@@ -459,7 +430,7 @@ input{
     width: 58px;
     height: 5px;
     background: #8EDF97 0% 0% no-repeat padding-box;
-    border-radius: 4px;
+    border-radius: 6px;
     opacity: 0.37;
 }
 
@@ -488,22 +459,19 @@ input{
 .storename{
     position: absolute;
     left: 20px;
-    /* top: 40px; */
+    top: 40px;
     width: fit-content;
-    /* height: 15%; */
-    /* text-align: left; */
-    /* border: 1px red dotted; */
     font: normal normal 800 23px/26px NanumSquare_ac;
     letter-spacing: -0.34px;
     color: #1E1B1B;
     opacity: 1;
-} */
+}
 
 .storecategory-box{
     position: absolute;
     right: 30px;
-    /* top: 40px; */
-    width: 100px;
+    top: 40px;
+    /* width: 100px; */
     height: 30px;
     background: #4AD295 0% 0% no-repeat padding-box;
     border-radius: 8px;
@@ -531,7 +499,6 @@ input{
     height: 15%;
     display: flex;
     flex-direction: row;
-    /* border: 1px red dotted; */
     text-align: left;
 }
 
@@ -543,7 +510,6 @@ input{
     height: 15%;
     display: flex;
     flex-direction: row;
-    /* border: 1px red dotted; */
 }
 
 .storeloca, .storenumber{
@@ -552,7 +518,7 @@ input{
     letter-spacing: -0.21px;
     color: #100F0F;
     opacity: 0.69;
-} */
+}
 
 .storeinfoicon{
     width: auto;
@@ -565,7 +531,7 @@ input{
     left: 0;
     bottom: 10px;
     width: 100%;
-    height: 80px;
+    height: 70px;
     display: flex;
     flex-direction: row;
 }
@@ -576,6 +542,7 @@ input{
     border: 0;
     outline: 0;
     width: 33%;
+    height: 70px;
     font: normal normal bold 15px/26px NanumSquare_ac;
     letter-spacing: -0.23px;
     background: #F7F7F7 0% 0% no-repeat padding-box;
@@ -583,23 +550,47 @@ input{
     border-radius: 13px;
     opacity: 1;
     cursor: pointer;
+    /* display: flex;
+    flex-direction: column; */
 }
 
 .btn_directions{
+    position: relative;
+    left: 0;
+    top: 0;
     padding: 0;
-    border: 0;
-    outline: 0;
-    width: 100%;
-    height: 100%;
-    font: normal normal bold 15px/26px NanumSquare_ac;
-    letter-spacing: -0.23px;
-    background: #F7F7F7 0% 0% no-repeat padding-box;
-    /* box-shadow: 0px 3px 6px #00000029; */
-    border-radius: 13px;
-    opacity: 1;
-    cursor: pointer;
+    border: 1px red dotted;
+    z-index: 5000000;
+    
 }
 
+.i_directions{
+    position: absolute;
+    left: 50%;
+    top: 7px;
+    transform: translate(-50%, -2px);
+    width: fit-content;
+}
+
+.name_directions{
+    position: absolute;
+    left: 50%;
+    top: 36px;
+    transform: translate(-50%,0);
+}
+.input-directions{
+    width: 0;
+    height: 0;
+    margin: 0;
+    padding: 0;
+    z-index: 10000;
+    opacity: 0;
+    border: 1px black dotted ;
+}
+/* .storebtnicon{
+    width: 100%;
+    height: 50px;
+} */
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
 
 /* 팝업-제보하기 */
