@@ -11,7 +11,7 @@ class Stores(models.Model):
     # 경도
     Latitude = models.FloatField(default=0)
     # 위도
-    idx = models.IntegerField(default=0)
+    # idx = models.IntegerField(default=0)
 
 TYPE_CHOICES = (
     ('','제보유형을 선택해 주세요'),
