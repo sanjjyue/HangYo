@@ -27,13 +27,8 @@
                             </button> 
                         </div>   
                     </form>
-                    <!-- <ul id="placesList"></ul>
-                    <div id="pagination"></div> -->
-                    <!-- <input type="text" class="search-loca" name="searchlocation" placeholder="위치를 검색하세요"> -->
                 </div>
                 <hr>
-                <ul id="placesList" class="placesList"></ul>
-                <div id="pagination" class="pagination"></div>
             </div>
         </div>
 
@@ -78,13 +73,17 @@
             <div class="bar1" ></div>  
             <div class="bar2" ></div>
     
+<<<<<<< HEAD
             <div class="store">
                 <div class="storename">  
                     {{i.store_name}} 안녕안녕  
+=======
+            <div class="storename">  
+>>>>>>> 0c2f486547b2cf28e1ea7119e2f3ccefc72bc5f4
                 </div>
                 <div class="storecategory-box"> 
                     <div class="storecategory"> 
-                            {{i.store_type}}
+                            <!-- {{i.store_type}} -->
                         </div> 
                     </div> 
                 </div> 
@@ -94,7 +93,6 @@
                         <img src="{% static 'image/geo.png' %}"> 
                     </div>   
                     <div class="storeloca"> 
-                        {{i.location}} 
                     </div> 
                 </div> 
     
@@ -103,28 +101,26 @@
                         <img src="{% static 'image/page-2.png' %}"> 
                     </div> 
                     <div class="storenumber"> 
-                        {{i.phone_num}} 
-                    </div> 
+                    </div>
                 </div> 
     
                 <div class="storeinfo-btn-box">
-
-                    <form id="storebutton" action="https://map.kakao.com/link/to/{{i.store_name}},{{i.Latitude}},{{i.longitude}}" target="_blank" type="submit">
+                    <input onclick="searchLoad(event); return false;" id="storebutton" value="">
                         <button class="btn_directions">
                             <div class="storebtnicon" id="i_directions">
-                                <img src="{% static 'image/junction.png' %}"> 
-                            </div>
-                            <div class = "btnname">길찾기</div>
+                                <img src="{% static 'image/junction.png' %}">
+                                <div class = "btnname">길찾기</div> 
+                            </div>                            
                         </button>
-                    </form>
-                
-                    <button class="btn_call" id="storebutton" onclick="location.href='tel:{{i.phone_num}}'">
+                    </input>
+                    
+                    <button class="btn_call" id="storebutton" onclick="location.href='tel:{{i.phone_num}}'">                        
                         <div class="storebtnicon" id="i_call"> 
                             <img src="{% static 'image/page-1.png' %}"> 
                         </div>
                         <div class = "btnname">전화연결</div>
-                    </button>
-                                                                                
+                    </button>               
+                    
                     <button class="btn_report" id="storebutton"> 
                         <div class="storebtnicon" id="i_report"> 
                             <img src="{% static 'image/siren.png' %}"> 
@@ -188,14 +184,18 @@
             {% csrf_token %}
             <div id="report-storesname-box">
                 <p id="report-storesname">
+<<<<<<< HEAD
                     가게명
+=======
+                    가게명 {{reportform.stores}}
+>>>>>>> 0c2f486547b2cf28e1ea7119e2f3ccefc72bc5f4
                 </p>
             </div>
             <p id="report-type">
-                {{contentform.type}}
+                {{reportform.type}}
             </p>
             <p id="report-content">
-                {{contentform.content}}
+                {{reportform.content}}
             </p>
             <!-- <div class="report-btn-box"> -->
             <input type="submit" class="btn_submit" id="btn_report_submit" value="제보하기">
@@ -221,9 +221,6 @@ var map = new kakao.maps.Map(container, options);
 
 // 장소 검색 객체를 생성합니다
 var ps = new kakao.maps.services.Places();
-
-// 검색 결과 목록이나 마커를 클릭했을 때 장소명을 표출할 인포윈도우를 생성합니다
-var infowindow = new kakao.maps.InfoWindow({zIndex:1});
 
 // 키워드로 장소를 검색합니다
 var keyword = document.getElementById('keyword').value;
@@ -277,7 +274,6 @@ function placesSearchCB(data, status) {
 
     }
 }
-
 
 
 // --검색 끝--
@@ -381,15 +377,16 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 //마커 관련 툴
 
 var positions = [
-    {% for i in take_all_info %}
+    {% for i in take_all_info %}
     {
-    content: '<div>{{i.store_name}}</div>', 
-    phone_num: '<div>{{i.phone_num}}</div>',
-    location: '<div>{{i.location}}<div>',
-    id: '{{i.idx}}',
+    content: '{{i.store_name}}', 
+    phone_num: '{{i.phone_num}}',
+    location: '{{i.location}}',
+    Latitude: '{{i.Latitude}}',
+    longitude: '{{i.longitude}}',
     latlng: new kakao.maps.LatLng({{i.Latitude}}, {{i.longitude}})
     },
-    {% endfor %} 
+    {% endfor %} 
 ];
 var selectedMarker = null;
 
@@ -430,6 +427,7 @@ var selectedMarker = null;
 
 
 console.log(positions)
+console.log(positions[0].content)
 
 // 마커 생성
 for (var i = 0; i < positions.length; i ++) {
@@ -461,13 +459,19 @@ function addMarker(position){
         selectedMarker = marker;
         var id = this.id;
         console.log(id);
-        
+        document.querySelector('#storebutton').value = id;
         var contents = positions[id].content;
         var storeloca = positions[id].location;
         var storenumber = positions[id].phone_num;
+        var Latitude = positions[id].Latitude;
+        var longitude = positions[id].longitude;
+
         document.querySelector('.storename').innerHTML = contents;
         document.querySelector('.storenumber').innerHTML = storenumber;
         document.querySelector('.storeloca').innerHTML = storeloca;
+        document.querySelector('.longitude').innerHTML = longitude;
+        document.querySelector('.Latitude').innerHTML = Latitude;
+
         // return false;
         });
 }
@@ -476,7 +480,20 @@ function addMarker(position){
         $('.storeinfo.open').removeClass('open');
     });
 
-    
+    const searchLoad = (event) => {     
+        target_id = event.target.value;
+        // console.log(positions[target_id].Latitude)
+        // console.log(positions[target_id].longitude)
+        action_url = "https://map.kakao.com/link/to/" + positions[target_id].content + ',' + positions[target_id].Latitude + ',' + positions[target_id].longitude; 
+        window.open(action_url)
+    }
+    // const storeCall = (event) => {     
+    //     target_id = event.target.value;
+    //     console.log(positions[target_id].storenumber)
+    //     action_url = "location.href='tel:" + positions[target_id].storenumber;
+    //     window.open(action_url)
+    // }
+
 
     </script>
 </body>

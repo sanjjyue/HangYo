@@ -12,7 +12,8 @@ def mainpage(request):
         if contentform.is_valid():
             contentform.save()
             return redirect('mainpage')
-    contentform = ReportForm()
+    reportform = ReportForm()
 
-    return render(request,'home.html', {'take_all_info' : all_info, 'contentform' : contentform})
+    return render(request,'home.html', {'take_all_info' : all_info, 'reportform' : reportform})
 
+    
