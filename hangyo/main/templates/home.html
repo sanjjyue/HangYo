@@ -73,13 +73,7 @@
             <div class="bar1" ></div>  
             <div class="bar2" ></div>
     
-<<<<<<< HEAD
-            <div class="store">
-                <div class="storename">  
-                    {{i.store_name}} 안녕안녕  
-=======
             <div class="storename">  
->>>>>>> 0c2f486547b2cf28e1ea7119e2f3ccefc72bc5f4
                 </div>
                 <div class="storecategory-box"> 
                     <div class="storecategory"> 
@@ -105,15 +99,16 @@
                 </div> 
     
                 <div class="storeinfo-btn-box">
-                    <input onclick="searchLoad(event); return false;" id="storebutton" value="">
-                        <button class="btn_directions">
-                            <div class="storebtnicon" id="i_directions">
-                                <img src="{% static 'image/junction.png' %}">
-                                <div class = "btnname">길찾기</div> 
-                            </div>                            
-                        </button>
-                    </input>
                     
+                    <button class="btn_directions" id="storebutton" onclick="searchLoad(event); return false;">
+                        <input class="input-directions">
+                        <div class="i_directions" id="storeicon">
+                            <img src="{% static 'image/junction.png' %}">
+                        </div>
+                        <div class = "name_directions" id = "btnname">길찾기</div>
+                    </button>
+
+                            
                     <button class="btn_call" id="storebutton" onclick="location.href='tel:{{i.phone_num}}'">                        
                         <div class="storebtnicon" id="i_call"> 
                             <img src="{% static 'image/page-1.png' %}"> 
@@ -130,7 +125,6 @@
                 </div>
             </div>
         </div>
-    </div>
     </div>
     
     <!-- 잔액 확인 팝업창 -->
@@ -184,11 +178,7 @@
             {% csrf_token %}
             <div id="report-storesname-box">
                 <p id="report-storesname">
-<<<<<<< HEAD
                     가게명
-=======
-                    가게명 {{reportform.stores}}
->>>>>>> 0c2f486547b2cf28e1ea7119e2f3ccefc72bc5f4
                 </p>
             </div>
             <p id="report-type">
