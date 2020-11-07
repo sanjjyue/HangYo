@@ -294,13 +294,13 @@ geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
 //마커 속성
 var imageSrc = "/static/image/marker_store.png",
     imageSize = new kakao.maps.Size(30 ,40), 
-    imageOption = {offset: new kakao.maps.Point(0, 0)}; //좌표랑 일치시킬 마커내의 좌표
+    imageOption = {offset: new kakao.maps.Point(15, 40)}; //좌표랑 일치시킬 마커내의 좌표
 var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
 
 //클릭시 마커속성
-var imageSrc_click = "/static/image/selected_marker.png",
+var imageSrc_click = "/static/image/selected_marker1.png",
     imageSize_click = new kakao.maps.Size(30 ,40), 
-    imageOption_click = {offset: new kakao.maps.Point(0, 0)}; //좌표랑 일치시킬 마커내의 좌표
+    imageOption_click = {offset: new kakao.maps.Point(15, 40)}; //좌표랑 일치시킬 마커내의 좌표
 var markerImage_click = new kakao.maps.MarkerImage(imageSrc_click, imageSize_click, imageOption_click)
 
 
@@ -440,7 +440,7 @@ function addMarker(position){
     // 마커 클릭 시 정보창 생성
 
 
-    kakao.maps.event.addListener(marker, 'click',function(markerImage_click){
+    kakao.maps.event.addListener(marker, 'click',function(){
         $('.storeinfo').toggleClass('open');
         if (!selectedMarker||selectedMarker !==marker){
             !!selectedMarker && selectedMarker.setImage(selectedMarker.markerImage);
