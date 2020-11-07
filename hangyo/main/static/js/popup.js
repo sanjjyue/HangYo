@@ -14,10 +14,10 @@
 //     }
 // }
 
-btn_checkbalance.addEventListener("click", toggle_checkbalance);
-btn_close_checkbalance.addEventListener("click", toggle_checkbalance);
-btn_iknow.addEventListener("click", toggle_checkbalance);
-window.addEventListener("click", btn_checkbalance_OnClick);
+// btn_checkbalance.addEventListener("click", toggle_checkbalance);
+// btn_close_checkbalance.addEventListener("click", toggle_checkbalance);
+// btn_iknow.addEventListener("click", toggle_checkbalance);
+// window.addEventListener("click", btn_checkbalance_OnClick);
 
 // 정보 재설정
 var resetinfo = document.querySelector(".resetinfo"); 

@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    {% for r in take_all_info%}
+    {{r.store_name}}
+    {{reportform.type}}
+    {{reportform.content}}<br>
+    {% endfor %}
+</body>
+</html>
