@@ -1,7 +1,7 @@
 from .base import *
 
 
-ALLOWED_HOSTS = ['www.hangyo.com']
+ALLOWED_HOSTS = ['*']
 
 DEBUG = False
 

@@ -21,5 +21,6 @@ from main.views import mainpage
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',mainpage, name = 'mainpage'),
+    # path('search/', search, name = 'search'),
 ]
 #test

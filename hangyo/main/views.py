@@ -10,10 +10,26 @@ def mainpage(request):
     if request.method == "POST":
         contentform = ReportForm(request.POST)
         if contentform.is_valid():
-            contentform.save()
+            content_form.save()
             return redirect('mainpage')
     reportform = ReportForm()
 
     return render(request,'home.html', {'take_all_info' : all_info, 'reportform' : reportform})
+
+# def search(request):
+#     all_info = Stores.objects.all()[:100]
+#     if request.method == "POST":
+#         contentform = ReportForm(request.POST)
+#         if contentform.is_valid():
+#             contentform.save()
+#             return redirect('mainpage')
+#     reportform = ReportForm()
+
+#     content = dict()
+#     free_store = Post.objects.filter(category__icontains)
+
+#     context = {'take_all_info' : all_info, 'reportform' : reportform}
+
+#     return render(request, 'search.html', context)
 
     
