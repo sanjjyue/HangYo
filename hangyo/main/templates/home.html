@@ -172,13 +172,12 @@
 
 
     <!-- 제보하기 팝업창 -->
-    {% for info in take_all_info %}
     <div class="report">
         <form method="POST" class="popupbox-report">
             {% csrf_token %}
             <div id="report-storesname-box">
-                <p id="report-storesname">
-                    {{info.store_name}}
+                <p id=report-storesname>
+
                 </p>
             </div>
             <p id="report-type">
@@ -192,7 +191,6 @@
             <!-- </div> -->
         </form>
     </div>
-    {% endfor %}
 
     <script src="{% static 'js/map.js' %}"></script>
     <script src="{% static 'js/popup.js' %}"></script>
@@ -454,12 +452,14 @@ function addMarker(position){
         var storenumber = positions[id].phone_num;
         var Latitude = positions[id].Latitude;
         var longitude = positions[id].longitude;
+        var reportstorename = position[id].content;
 
         document.querySelector('.storename').innerHTML = contents;
         document.querySelector('.storenumber').innerHTML = storenumber;
         document.querySelector('.storeloca').innerHTML = storeloca;
         document.querySelector('.longitude').innerHTML = longitude;
         document.querySelector('.Latitude').innerHTML = Latitude;
+        document.querySelector('#report-storesname').innerHTML = reportstorename;
 
         // return false;
         });
