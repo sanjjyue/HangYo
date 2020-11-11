@@ -173,12 +173,13 @@
 
 
     <!-- 제보하기 팝업창 -->
+    {% for info in take_all_info %}
     <div class="report">
         <form method="POST" class="popupbox-report">
             {% csrf_token %}
             <div id="report-storesname-box">
                 <p id="report-storesname">
-                    가게명
+                    {{info.store_name}}
                 </p>
             </div>
             <p id="report-type">
@@ -188,10 +189,11 @@
                 {{reportform.content}}
             </p>
             <!-- <div class="report-btn-box"> -->
-            <input type="submit" class="btn_submit" id="btn_report_submit" value="제보하기">
+            <input type="submit" class="btn_submit"  value="제보하기" action="{% url 'report' info.id %"}>
             <!-- </div> -->
         </form>
     </div>
+    {% endfor %}
 
     <script src="{% static 'js/map.js' %}"></script>
     <script src="{% static 'js/popup.js' %}"></script>

@@ -1,23 +1,4 @@
 // 잔액 확인효원아미아내
-// var checkbalance = document.querySelector(".checkbalance");
-// var btn_checkbalance = document.querySelector(".btn_checkbalance"); 
-// var btn_close_checkbalance = document.querySelector(".btn_close_checkbalance");
-// var btn_iknow = document.querySelector(".btn_iknow");
-
-// function toggle_checkbalance(){
-//     checkbalance.classList.toggle("pop-checkbalance");
-// }
-
-// function btn_checkbalance_OnClick(event) {
-//     if (event.target === checkbalance) {
-//         toggle_checkbalance();
-//     }
-// }
-
-btn_checkbalance.addEventListener("click", toggle_checkbalance);
-btn_close_checkbalance.addEventListener("click", toggle_checkbalance);
-btn_iknow.addEventListener("click", toggle_checkbalance);
-window.addEventListener("click", btn_checkbalance_OnClick);
 
 // 정보 재설정
 var resetinfo = document.querySelector(".resetinfo"); 

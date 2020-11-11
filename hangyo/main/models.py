@@ -21,8 +21,8 @@ TYPE_CHOICES = (
 )
 
 class Report(models.Model):
+    stores = models.ForeignKey(Stores, verbose_name="관련 가게", on_delete=models.CASCADE, null=True)
     type = models.CharField("제보 유형", max_length=100, choices=TYPE_CHOICES)
-    stores = models.ForeignKey(Stores, verbose_name="관련 가게", on_delete=models.CASCADE)
     content = models.CharField('제보 내용', max_length=300)  
 
     def __str__(self):
