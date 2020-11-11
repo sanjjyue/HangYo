@@ -22,5 +22,6 @@ urlpatterns = [
     path('admin/', admin.site.urls),
     path('',mainpage, name = 'mainpage'),
     path('report/<int:info_id>/', report, name = 'report'),
+    # path('search/', search, name = 'search'),
 ]
 #test

@@ -77,7 +77,6 @@
                 </div>
                 <div class="storecategory-box"> 
                     <div class="storecategory"> 
-                            <!-- {{i.store_type}} -->
                         </div> 
                     </div> 
                 </div> 
@@ -371,7 +370,7 @@ map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
 var positions = [
     {% for i in take_all_info %}
     {
-    content: '{{i.store_name}}', 
+    content: '{{i.store_name}}',
     phone_num: '{{i.phone_num}}',
     location: '{{i.location}}',
     Latitude: '{{i.Latitude}}',
@@ -418,8 +417,6 @@ var selectedMarker = null;
 
 
 
-console.log(positions)
-console.log(positions[0].content)
 
 // 마커 생성
 for (var i = 0; i < positions.length; i ++) {
@@ -450,7 +447,7 @@ function addMarker(position){
         }
         selectedMarker = marker;
         var id = this.id;
-        console.log(id);
+        // console.log(id);
         document.querySelector('#storebutton').value = id;
         var contents = positions[id].content;
         var storeloca = positions[id].location;

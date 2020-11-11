@@ -1,5 +1,3 @@
-// 잔액 확인효원아미아내
-
 // 정보 재설정
 var resetinfo = document.querySelector(".resetinfo"); 
 var btn_resetinfo = document.querySelector(".btn_resetinfo"); 
