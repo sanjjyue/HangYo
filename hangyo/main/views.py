@@ -16,7 +16,7 @@ def report(request, info_id):
             tempform = contentform.save(commit=False)
             tempform.stores=Stores.objects.get(pk=info_id)
             tempform.save()
-            return redirect('mainpage')
+            return redirect('mainpage',info_id)
     reportform = ReportForm()
 
     return render(request,'home.html', {'reportform' : reportform})
