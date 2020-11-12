@@ -176,8 +176,8 @@
         <form method="POST" class="popupbox-report">
             {% csrf_token %}
             <div id="report-storesname-box">
-                <p id="report-storesname">
-                    {{reportform.stores}}
+                <p id=report-storesname>
+
                 </p>
             </div>
             <p id="report-type">
@@ -187,8 +187,7 @@
                 {{reportform.content}}
             </p>
             <!-- <div class="report-btn-box"> -->
-            <!-- <input type="hidden" name="store_number" value="{{take_all_info.id}}"> -->
-            <input type="submit" class="btn_submit" id="btn_report_submit" value="제보하기">
+            <input type="submit" class="btn_submit"  value="제보하기" action="{% url 'report' info.id %"}>
             <!-- </div> -->
         </form>
     </div>
@@ -453,12 +452,14 @@ function addMarker(position){
         var storenumber = positions[id].phone_num;
         var Latitude = positions[id].Latitude;
         var longitude = positions[id].longitude;
+        var reportstorename = position[id].content;
 
         document.querySelector('.storename').innerHTML = contents;
         document.querySelector('.storenumber').innerHTML = storenumber;
         document.querySelector('.storeloca').innerHTML = storeloca;
         document.querySelector('.longitude').innerHTML = longitude;
         document.querySelector('.Latitude').innerHTML = Latitude;
+        document.querySelector('#report-storesname').innerHTML = reportstorename;
 
         // return false;
         });
