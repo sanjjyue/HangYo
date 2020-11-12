@@ -86,7 +86,7 @@
                         <img src="{% static 'image/geo.png' %}"> 
                     </div>   
                     <div class="storeloca"> 
-                    </div> 
+                        </div> 
                 </div> 
     
                 <div class="storenumber-box"> 
@@ -94,7 +94,7 @@
                         <img src="{% static 'image/page-2.png' %}"> 
                     </div> 
                     <div class="storenumber"> 
-                    </div>
+                        </div>
                 </div> 
     
                 <div class="storeinfo-btn-box">
@@ -452,14 +452,14 @@ function addMarker(position){
         var storenumber = positions[id].phone_num;
         var Latitude = positions[id].Latitude;
         var longitude = positions[id].longitude;
-        var reportstorename = position[id].content;
+        // var reportstorename = position[id].content;
 
         document.querySelector('.storename').innerHTML = contents;
         document.querySelector('.storenumber').innerHTML = storenumber;
         document.querySelector('.storeloca').innerHTML = storeloca;
         document.querySelector('.longitude').innerHTML = longitude;
         document.querySelector('.Latitude').innerHTML = Latitude;
-        document.querySelector('#report-storesname').innerHTML = reportstorename;
+        // document.querySelector('#report-storesname').innerHTML = reportstorename;
 
         // return false;
         });
