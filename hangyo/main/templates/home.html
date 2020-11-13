@@ -127,7 +127,7 @@
     </div>
     
     <!-- 잔액 확인 팝업창 -->
-    <div class="checkbalance" id="modal">
+    <!-- <div class="checkbalance" id="modal">
         <div class="popupbox-checkbalance">
             <div class="iconbox">
                 <img src="{% static 'image/coin.png' %}">
@@ -143,7 +143,7 @@
             </div>
             <input type="button" class="btn_iknow" value="알겠어요!">
         </div>
-    </div>    
+    </div>     -->
 
     <!-- 정보 재설정 팝업창 -->
     <div class="resetinfo">
@@ -173,12 +173,12 @@
 
     <!-- 제보하기 팝업창 -->
     <div class="report">
-        <form method="POST" class="popupbox-report">
+        <form method="POST" class="popupbox-report" action = "{% url 'report'%}">
             {% csrf_token %}
             <div id="report-storesname-box">
-                <p id=report-storesname>
-
-                </p>
+                <div id="report-storesname">            
+                {{reportform.name}}
+                </div>          
             </div>
             <p id="report-type">
                 {{reportform.type}}
@@ -187,7 +187,7 @@
                 {{reportform.content}}
             </p>
             <!-- <div class="report-btn-box"> -->
-            <input type="submit" class="btn_submit"  value="제보하기" action="{% url 'report' info.id %"}>
+            <input type="submit" class="btn_submit"  value="제보하기">
             <!-- </div> -->
         </form>
     </div>
