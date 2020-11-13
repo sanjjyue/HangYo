@@ -86,7 +86,7 @@
                         <img src="{% static 'image/geo.png' %}"> 
                     </div>   
                     <div class="storeloca"> 
-                    </div> 
+                        </div> 
                 </div> 
     
                 <div class="storenumber-box"> 
@@ -94,7 +94,7 @@
                         <img src="{% static 'image/page-2.png' %}"> 
                     </div> 
                     <div class="storenumber"> 
-                    </div>
+                        </div>
                 </div> 
     
                 <div class="storeinfo-btn-box">
@@ -127,7 +127,7 @@
     </div>
     
     <!-- 잔액 확인 팝업창 -->
-    <div class="checkbalance" id="modal">
+    <!-- <div class="checkbalance" id="modal">
         <div class="popupbox-checkbalance">
             <div class="iconbox">
                 <img src="{% static 'image/coin.png' %}">
@@ -143,7 +143,7 @@
             </div>
             <input type="button" class="btn_iknow" value="알겠어요!">
         </div>
-    </div>    
+    </div>     -->
 
     <!-- 정보 재설정 팝업창 -->
     <div class="resetinfo">
@@ -173,12 +173,12 @@
 
     <!-- 제보하기 팝업창 -->
     <div class="report">
-        <form method="POST" class="popupbox-report">
+        <form method="POST" class="popupbox-report" action = "{% url 'report'%}">
             {% csrf_token %}
             <div id="report-storesname-box">
-                <p id=report-storesname>
-
-                </p>
+                <div id="report-storesname">            
+                {{reportform.name}}
+                </div>          
             </div>
             <p id="report-type">
                 {{reportform.type}}
@@ -187,7 +187,7 @@
                 {{reportform.content}}
             </p>
             <!-- <div class="report-btn-box"> -->
-            <input type="submit" class="btn_submit"  value="제보하기" action="{% url 'report' info.id %"}>
+            <input type="submit" class="btn_submit"  value="제보하기">
             <!-- </div> -->
         </form>
     </div>
@@ -452,14 +452,14 @@ function addMarker(position){
         var storenumber = positions[id].phone_num;
         var Latitude = positions[id].Latitude;
         var longitude = positions[id].longitude;
-        var reportstorename = position[id].content;
+        // var reportstorename = position[id].content;
 
         document.querySelector('.storename').innerHTML = contents;
         document.querySelector('.storenumber').innerHTML = storenumber;
         document.querySelector('.storeloca').innerHTML = storeloca;
         document.querySelector('.longitude').innerHTML = longitude;
         document.querySelector('.Latitude').innerHTML = Latitude;
-        document.querySelector('#report-storesname').innerHTML = reportstorename;
+        // document.querySelector('#report-storesname').innerHTML = reportstorename;
 
         // return false;
         });
