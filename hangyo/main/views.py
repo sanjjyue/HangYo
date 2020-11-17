@@ -4,7 +4,7 @@ from .forms import ReportForm
 
 # Create your views here.
 def mainpage(request):
-    all_info = Stores.objects.all()
+    all_info = Stores.objects.all()[:5]
     reportform = ReportForm()
     return render(request,'home.html', {'take_all_info' : all_info,'reportform' : ReportForm})
 
