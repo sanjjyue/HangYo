@@ -10,122 +10,111 @@
     <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=a1e71c3e49ea6232c6622dd828be2a59&libraries&libraries=services"></script>
 </head>
 <body>
-    <div class="mainbox">
-        <!-- 검색바 -->
-        <div class="top-container">
-            <div class="local-box">
-                <div class="localname" id="localname">
-                </div>
-            </div>
-            <div id="menu_wrap" class="bg_white">
-                <div>
-                    <form onsubmit="searchPlaces(); return false;">
-                        <input class="search-box" type="text" value="  " id="keyword" size="15">
-                        <div class="search-button-box">
-                            <button class = "search-button" id="search_btn" type="submit">
-                                <img class="magnifying-glass" src="{% static 'image/magnifying-glass.png' %}" >
-                            </button> 
-                        </div>   
-                    </form>
-                </div>
-                <hr>
+    <!-- 검색바 -->
+    <div class="top-container">
+        <div class="local-box">
+            <div class="localname" id="localname">
             </div>
         </div>
-
-
-        <!-- 지도 -->
-        <div class="map" id="map"></div>
-        
-        <!-- 카테고리바 -->
-        <div class="categorybar">
-            <button class="btn_myloca" id="categorybutton" onclick='panTo()'>
-                <div class="categorybox">
-                    <div id="categoryicon">
-                        <img src="{% static 'image/geo.png' %}">
+        <div id="menu_wrap" class="bg_white">
+            <div>
+                <form onsubmit="searchPlaces(); return false;">
+                    <input class="search-box" type="text" value="  " id="keyword" size="15">
+                    <div class="search-button-box">
+                        <button class = "search-button" id="search_btn" type="submit">
+                            <img class="magnifying-glass" src="{% static 'image/magnifying-glass.png' %}" >
+                        </button>
                     </div>
-                    <div id = "categoryname">내 위치</div>
-                </div>
-            </button>
-                    
-            <button class="btn_checkbalance" id="categorybutton" onclick="location.href='http://busan.nhdream.co.kr/Login/PointCheck.jsp'">
-                <div class="categorybox">
-                    <div class="i_checkbalance" id="categoryicon">
-                        <img src="{% static 'image/money-bag.png' %}">
-                    </div>
-                    <div id = "categoryname">잔액 확인</div>
-                </div>
-            </button>
-                    
-            <button class="btn_resetinfo" id="categorybutton">
-                <div class="categorybox">
-                    <div class="i_resetinfo" id="categoryicon">
-                        <img src="{% static 'image/gear.png' %}">
-                    </div>
-                    <div id = "categoryname">개발자 한마디</div>
-                </div>
-            </button>
+                </form>
+            </div>
+            <hr>
         </div>
+    </div>
+    <!-- 지도 -->
+    <div class="map" id="map"></div>
 
-            <!-- 가게 정보 팝업창 -->
+    <!-- 카테고리바 -->
+    <div class="categorybar">
+        <button class="btn_myloca" id="categorybutton" onclick='panTo()'>
+            <div class="categorybox">
+                <div id="categoryicon">
+                    <img src="{% static 'image/geo.png' %}">
+                </div>
+                <div id = "categoryname">내 위치</div>
+            </div>
+        </button>
+
+        <button class="btn_checkbalance" id="categorybutton" onclick="location.href='http://busan.nhdream.co.kr/Login/PointCheck.jsp'">
+            <div class="categorybox">
+                <div class="i_checkbalance" id="categoryicon">
+                    <img src="{% static 'image/money-bag.png' %}">
+                </div>
+                <div id = "categoryname">잔액 확인</div>
+            </div>
+        </button>
+
+        <button class="btn_info" id="categorybutton">
+            <div class="categorybox">
+                <div class="i_info" id="categoryicon">
+                    <img src="{% static 'image/gear.png' %}">
+                </div>
+                <div id = "categoryname">개발자 한마디</div>
+            </div>
+        </button>
+    </div>
+    
+    <!-- 가게 정보 팝업창 -->
     <div class="storeinfo">
         <div class="popupbox-storeinfo">
-
-            <div class="bar1" ></div>  
+            <div class="bar1" ></div>
             <div class="bar2" ></div>
-    
-            <div class="storename">  
-                </div>
-                <div class="storecategory-box"> 
-                    <div class="storecategory"> 
-                        </div> 
-                    </div> 
-                </div> 
-    
-                <div class="storeloca-box"> 
-                    <div class="storeinfoicon" id="i_storeloca"> 
-                        <img src="{% static 'image/geo.png' %}"> 
-                    </div>   
-                    <div class="storeloca"> 
-                        </div> 
-                </div> 
-    
-                <div class="storenumber-box"> 
-                    <div class="storeinfoicon" id="i_storenumber"> 
-                        <img src="{% static 'image/page-2.png' %}"> 
-                    </div> 
-                    <div class="storenumber"> 
-                        </div>
-                </div> 
-    
-                <div class="storeinfo-btn-box">
-                    
-                    <button class="btn_directions" id="storebutton" onclick="searchLoad(event); return false;">
-                        <input class="input-directions">
-                        <div class="i_directions" id="storeicon">
-                            <img src="{% static 'image/junction.png' %}">
-                        </div>
-                        <div class = "name_directions" id = "btnname">길찾기</div>
-                    </button>
 
-                            
-                    <button class="btn_call" id="storebutton" onclick="location.href='tel:{{i.phone_num}}'">                        
-                        <div class="storebtnicon" id="i_call"> 
-                            <img src="{% static 'image/page-1.png' %}"> 
-                        </div>
-                        <div class = "btnname">전화연결</div>
-                    </button>               
-                    
-                    <button class="btn_report" id="storebutton"> 
-                        <div class="storebtnicon" id="i_report"> 
-                            <img src="{% static 'image/siren.png' %}"> 
-                        </div> 
-                        <div class = "btnname">제보하기</div> 
-                    </button> 
+            <div class="storename">
+            </div>
+
+            <div class="storeloca-box">
+                <div class="storeinfoicon" id="i_storeloca">
+                    <img src="{% static 'image/geo.png' %}">
                 </div>
+                <div class="storeloca">
+                </div>
+            </div>
+
+            <div class="storenumber-box">
+                <div class="storeinfoicon" id="i_storenumber">
+                    <img src="{% static 'image/page-2.png' %}">
+                </div>
+                <div class="storenumber">
+                </div>
+            </div>
+
+            <div class="storeinfo-btn-box">
+
+                <button class="btn_directions" id="storebutton" onclick="searchLoad(event); return false;">
+                    <input class="input-directions">
+                    <div class="i_directions" id="storeicon">
+                        <img src="{% static 'image/junction.png' %}">
+                    </div>
+                    <div class = "name_directions" id = "btnname">길찾기</div>
+                </button>
+
+                <button class="btn_call" id="storebutton" onclick="location.href='tel:{{i.phone_num}}'">
+                    <div class="storebtnicon" id="i_call">
+                        <img src="{% static 'image/page-1.png' %}">
+                    </div>
+                    <div class = "btnname">전화연결</div>
+                </button>
+
+                <button class="btn_report" id="storebutton">
+                    <div class="storebtnicon" id="i_report">
+                        <img src="{% static 'image/siren.png' %}">
+                    </div>
+                    <div class = "btnname">제보하기</div>
+                </button>
             </div>
         </div>
     </div>
-    
+
     <!-- 잔액 확인 팝업창 -->
     <!-- <div class="checkbalance" id="modal">
         <div class="popupbox-checkbalance">
@@ -145,26 +134,21 @@
         </div>
     </div>     -->
 
-    <!-- 정보 재설정 팝업창 -->
-    <div class="resetinfo">
-        <div class="popupbox-resetinfo">
+    <!-- 개발자소개 팝업창 -->
+    <div class="info">
+        <div class="popupbox-info">
             <div class="iconbox">
                 <img src="{% static 'image/Lovepik.png' %}">
             </div>
-            <div class="btn_close_resetinfo">&times;</div>
-            <div class="titlebox_resetinfo">
+            <div class="btn_close_info">&times;</div>
+            <div class="titlebox_info">
                 <div class="title">행요!</div>
             </div>
-            <!-- <div class="inputbox">
-                <input type="text" class="input-info" name="name" placeholder="이름">
-                <input type="text" class="input-info" name="location" placeholder="장소">
-                <input type="text" class="input-info" name="cardnumber" placeholder="카드번호(012345678901)">
-            </div> -->
             <div class="notebox">
                 <div class="note">
-                    본 페이지는 부산 멋쟁이사자처럼8기<br> 
+                    본 페이지는 부산 멋쟁이사자처럼8기<br>
                     team산쮸에서 제작되었습니다.<br><br>
-                    행복드림카드 이용시 조금이나마<br> 
+                    행복드림카드 이용시 조금이나마<br>
                     도움이 되었으면 좋겠습니다.<br>
                     불편함이나 개선사항이 있으시면<br>
                     언제든 말씀해주세요.
@@ -181,9 +165,9 @@
         <form method="POST" class="popupbox-report" action = "{% url 'report'%}">
             {% csrf_token %}
             <div id="report-storesname-box">
-                <div id="report-storesname">            
+                <div id="report-storesname">
                 {{reportform.name}}
-                </div>          
+                </div>
             </div>
             <p id="report-type">
                 {{reportform.type}}
@@ -202,7 +186,7 @@
 
     <!-- 지도 -->
     <script>
-var markers = [];     
+var markers = [];
 var container = document.getElementById('map');
 var options = {
     center: new kakao.maps.LatLng(35.234104, 129.078411),
@@ -238,8 +222,8 @@ function searchPlaces() {
     }
 
     // 장소검색 객체를 통해 키워드로 장소검색을 요청합니다
-    ps.keywordSearch(keyword, placesSearchCB); 
-}   
+    ps.keywordSearch(keyword, placesSearchCB);
+}
 
 // 장소검색이 완료됐을 때 호출되는 콜백함수 입니다
 function placesSearchCB(data, status) {
@@ -253,7 +237,7 @@ function placesSearchCB(data, status) {
         document.getElementById("center_lat").value = map.getCenter().getLat();
         document.getElementById("center_lng").value = map.getCenter().getLng();
         // ----
-        
+
         return;
 
     } else if (status === kakao.maps.services.Status.ZERO_RESULT) {
@@ -297,13 +281,13 @@ geocoder.coord2Address(coord.getLng(), coord.getLat(), callback);
 
 //마커 속성
 var imageSrc = "/static/image/marker_store.png",
-    imageSize = new kakao.maps.Size(30 ,40), 
+    imageSize = new kakao.maps.Size(30 ,40),
     imageOption = {offset: new kakao.maps.Point(15, 40)}; //좌표랑 일치시킬 마커내의 좌표
 var markerImage = new kakao.maps.MarkerImage(imageSrc, imageSize, imageOption)
 
 //클릭시 마커속성
 var imageSrc_click = "/static/image/selected_marker1.png",
-    imageSize_click = new kakao.maps.Size(30 ,40), 
+    imageSize_click = new kakao.maps.Size(30 ,40),
     imageOption_click = {offset: new kakao.maps.Point(15, 40)}; //좌표랑 일치시킬 마커내의 좌표
 var markerImage_click = new kakao.maps.MarkerImage(imageSrc_click, imageSize_click, imageOption_click)
 
@@ -321,48 +305,48 @@ var here = document.querySelector('.btn_myloca')
 if (navigator.geolocation) {
 // 접속위치 얻어오기
     navigator.geolocation.getCurrentPosition(function(position) {
-        
+
         var lat = position.coords.latitude, // 위도
             lon = position.coords.longitude; // 경도
-        
+
         var locPosition = new kakao.maps.LatLng(lat, lon);
-        
-        displayMarker(locPosition, message); 
-            
+
+        displayMarker(locPosition, message);
+
     });
-    
+
 } else { //GeoLocation을 사용할 수 없을때
-    
-    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),    
+
+    var locPosition = new kakao.maps.LatLng(33.450701, 126.570667),
         message = 'geolocation을 사용할수 없어요..'
-        
+
     displayMarker(locPosition, message);
-}     
+}
 function displayMarker(locPosition, message) {
 
 // 마커 생성
-var marker1 = new kakao.maps.Marker({  
-    map: map, 
+var marker1 = new kakao.maps.Marker({
+    map: map,
     image:markerImage1,
     position: locPosition
-}); 
+});
 
-marker1.setMap(map);  
+marker1.setMap(map);
 
-}    
+}
 
 // 버튼생성 후 특정 위치로 부드럽게 이동
-function panTo() { 
+function panTo() {
     navigator.geolocation.getCurrentPosition(function(position) {
-        
+
         var lat = position.coords.latitude, // 위도
             lon = position.coords.longitude; // 경도
-        
+
         var locPosition = new kakao.maps.LatLng(lat, lon);
-    
+
         map.panTo(locPosition);
     });
-} 
+}
 // 지도 줌
 var zoomControl = new kakao.maps.ZoomControl();
 map.addControl(zoomControl, kakao.maps.ControlPosition.RIGHT);
@@ -380,7 +364,7 @@ var positions = [
     longitude: '{{i.longitude}}',
     latlng: new kakao.maps.LatLng({{i.Latitude}}, {{i.longitude}})
     },
-    {% endfor %} 
+    {% endfor %}
 ];
 var selectedMarker = null;
 
@@ -390,8 +374,8 @@ var selectedMarker = null;
 //커스텀 오버레이 생성
 // for (var i = 0; i < contents.length; i ++) {
 //     var marker = new kakao.maps.Marker({
-//         position: contents[i].latlng, 
-//         image: markerImage, 
+//         position: contents[i].latlng,
+//         image: markerImage,
 //         map: map,
         // clickable: true
     // });
@@ -428,8 +412,8 @@ for (var i = 0; i < positions.length; i ++) {
 
 function addMarker(position){
     var marker = new kakao.maps.Marker({
-        position: positions[i].latlng, 
-        image: markerImage, 
+        position: positions[i].latlng,
+        image: markerImage,
         clickable: true,
         // i = id,
     });
@@ -474,14 +458,14 @@ function addMarker(position){
         $('.storeinfo.open').removeClass('open');
     });
 
-    const searchLoad = (event) => {     
+    const searchLoad = (event) => {
         target_id = event.target.value;
         // console.log(positions[target_id].Latitude)
         // console.log(positions[target_id].longitude)
-        action_url = "https://map.kakao.com/link/to/" + positions[target_id].content + ',' + positions[target_id].Latitude + ',' + positions[target_id].longitude; 
+        action_url = "https://map.kakao.com/link/to/" + positions[target_id].content + ',' + positions[target_id].Latitude + ',' + positions[target_id].longitude;
         window.open(action_url)
     }
-    // const storeCall = (event) => {     
+    // const storeCall = (event) => {
     //     target_id = event.target.value;
     //     console.log(positions[target_id].storenumber)
     //     action_url = "location.href='tel:" + positions[target_id].storenumber;
