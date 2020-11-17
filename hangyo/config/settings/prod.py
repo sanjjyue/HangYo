@@ -6,12 +6,12 @@ DEBUG = False
 
 DATABASES = {
     'default': {
-        'ENGINE': 'django.db.backends.mysql',
-        'NAME': 'hangyo_database',
-        'USER': 'root',
-        'PASSWORD': '10dnjf8dlf~',
+        'ENGINE': 'django.db.backends.postgresql_psycopg2',
+        'NAME': 'hangyo_deploy',
+        'USER': 'lee',
+        'PASSWORD': '',
         'HOST': 'localhost',
-        'PORT': '3306',
+        'PORT': '5432',
     }
 }
 
