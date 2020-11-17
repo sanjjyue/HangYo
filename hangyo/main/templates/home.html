@@ -70,14 +70,14 @@
             <div class="bar2" ></div>
 
             <div class="storename">
-            </div>
+                </div>
 
             <div class="storeloca-box">
                 <div class="storeinfoicon" id="i_storeloca">
                     <img src="{% static 'image/geo.png' %}">
                 </div>
                 <div class="storeloca">
-                </div>
+                    </div>
             </div>
 
             <div class="storenumber-box">
@@ -85,27 +85,27 @@
                     <img src="{% static 'image/page-2.png' %}">
                 </div>
                 <div class="storenumber">
-                </div>
+                    </div>
             </div>
 
             <div class="storeinfo-btn-box">
 
-                <button class="btn_directions" id="storebutton" onclick="searchLoad(event); return false;">
+                <button class="storebutton" id="btn_directions" onclick="searchLoad(event); return false;">
                     <input class="input-directions">
-                    <div class="i_directions" id="storeicon">
+                    <div class="storebtnicon" id="i_directions">
                         <img src="{% static 'image/junction.png' %}">
                     </div>
-                    <div class = "name_directions" id = "btnname">길찾기</div>
+                    <div class = "btnname" id = "name_directions">길찾기</div>
                 </button>
 
-                <button class="btn_call" id="storebutton" onclick="location.href='tel:{{i.phone_num}}'">
+                <button class="storebutton" id="btn_call" onclick="location.href='tel:{{i.phone_num}}'">
                     <div class="storebtnicon" id="i_call">
                         <img src="{% static 'image/page-1.png' %}">
                     </div>
                     <div class = "btnname">전화연결</div>
                 </button>
 
-                <button class="btn_report" id="storebutton">
+                <button class="storebutton" id="btn_report">
                     <div class="storebtnicon" id="i_report">
                         <img src="{% static 'image/siren.png' %}">
                     </div>
@@ -435,20 +435,18 @@ function addMarker(position){
         selectedMarker = marker;
         var id = this.id;
         // console.log(id);
-        document.querySelector('#storebutton').value = id;
+        document.querySelector('.storebutton').value = id;
         var contents = positions[id].content;
         var storeloca = positions[id].location;
         var storenumber = positions[id].phone_num;
         var Latitude = positions[id].Latitude;
         var longitude = positions[id].longitude;
-        // var reportstorename = position[id].content;
 
         document.querySelector('.storename').innerHTML = contents;
         document.querySelector('.storenumber').innerHTML = storenumber;
         document.querySelector('.storeloca').innerHTML = storeloca;
         document.querySelector('.longitude').innerHTML = longitude;
         document.querySelector('.Latitude').innerHTML = Latitude;
-        // document.querySelector('#report-storesname').innerHTML = reportstorename;
 
         // return false;
         });

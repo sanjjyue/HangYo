@@ -82,8 +82,9 @@ body{
 }
 
 .placesList{
-    position: absolute;left: 20%;width: 50%;
-    width: 400px;
+    position: absolute;
+    left: 20%;
+    width: 50%;
     height: 50%;
 }
 
@@ -119,15 +120,17 @@ body{
     bottom: 0;
     width: 100%;
     height: 64px;
+    margin: 0;
+    padding: 0;
     display: flex;
-    box-shadow: 0px -0.5em 1em #00000029;
+    box-shadow: 0px -5px 6px #00000029;
     opacity: 1;
     z-index: 1;
 }
 
 #categorybutton {
-    width: 100%;
-    height: 100%;
+    width: 34%;
+    height: 64px;
     display: inline-flex;
     flex-direction: column;
     padding: 0;
@@ -140,8 +143,8 @@ body{
 
 .categorybox {
     width: 100%;
-    height: 92%;
-    padding: 4% 0%;
+    height: 64px;
+    padding: 10px 0px;
 }
 
 #categoryicon {
@@ -150,8 +153,8 @@ body{
 }
 
 #categoryname {
-    margin: -2px 0;
-    font: normal normal 800 0.8em/3em NanumSquare_ac;
+    margin: -4px 0;
+    font: normal normal 800 9px/26px NanumSquare_ac;
     letter-spacing: -0.14px;
     color: #000000;
     opacity: 0.5;
@@ -182,7 +185,7 @@ body{
     height: 250px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0.5rem 0.5rem 0.5rem #00000029;
-    border-radius: 2rem;
+    border-radius: 30px;
     opacity: 1;
 }
 
@@ -213,7 +216,7 @@ body{
 }
 
 .title{
-    font: normal normal 800 1.3em/2em NanumSquare_ac;
+    font: normal normal 800 23px/26px NanumSquare_ac;
     letter-spacing: -0.34px;
     color: #1E1B1B;
     opacity: 1;
@@ -230,7 +233,7 @@ body{
 .content{
     padding: 0% 12%;
     text-align: center;
-    font: normal normal bold 1.1em/1.5em Agency FB;
+    font: normal normal bold 1.21px/26px Agency FB;
     letter-spacing: -0.6px;
     color: #464646DB;
     opacity: 1;
@@ -282,7 +285,7 @@ input{
     height: 350px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0.5rem 0.5rem 0.5rem #00000029;
-    border-radius: 2rem;
+    border-radius: 30px;
     opacity: 1;
 }
 
@@ -305,7 +308,7 @@ input{
 }
 
 .title{
-    font: normal normal 800 1.3em/2em NanumSquare_ac;
+    font: normal normal 800 23px/26px NanumSquare_ac;
     letter-spacing: -0.34px;
     color: #1E1B1B;
     opacity: 1;
@@ -319,23 +322,19 @@ input{
     padding: 1% 0% 1% 0%;
 } */
 
-#id_name{
-    text-align: center;
-}
-
-.input-info{
+/* .input-info{
     margin: 2px 0;
     border: 0;
     outline: 0;
     border-bottom: 1px solid #707070;
-    font: normal normal bold 1em/1.5em NanumSquare_ac;
+    font: normal normal bold 21px/26px NanumSquare_ac;
     letter-spacing: -0.35px;
     opacity: 1;
-}
+} */
 
-::placeholder{
+/* ::placeholder{
     height: 30%;
-}
+} */
 
 .notebox{
     position: absolute;
@@ -462,11 +461,10 @@ input{
     opacity: 1;
 }
 
-.storecategory-box{
+/* .storecategory-box{
     position: absolute;
     right: 30px;
     top: 40px;
-    /* width: 100px; */
     height: 30px;
     background: #4AD295 0% 0% no-repeat padding-box;
     border-radius: 8px;
@@ -479,12 +477,11 @@ input{
     left: 50%;
     transform: translate(-50%,-50%);
     width: 100px;
-    /* text-align: left; */
     font: normal normal 800 18px/26px NanumSquare_ac;
     letter-spacing: -0.2px;
     color: #F0F8F3;
     opacity: 1;
-}
+} */
 
 .storeloca-box{
     position: absolute;
@@ -531,7 +528,10 @@ input{
     flex-direction: row;
 }
 
-#storebutton{
+.storebutton{
+    position: relative;
+    left: 0;
+    top: 0;
     margin: 5px;
     padding: 0;
     border: 0;
@@ -547,27 +547,6 @@ input{
     cursor: pointer;
 }
 
-.btn_directions{
-    position: relative;
-    left: 0;
-    top: 0;
-    padding: 0;    
-}
-
-.i_directions{
-    position: absolute;
-    left: 50%;
-    top: 7px;
-    transform: translate(-50%, -2px);
-    width: fit-content;
-}
-
-.name_directions{
-    position: absolute;
-    left: 50%;
-    top: 36px;
-    transform: translate(-50%,0);
-}
 .input-directions{
     width: 0;
     height: 0;
@@ -575,11 +554,24 @@ input{
     padding: 0;
     opacity: 0;
 }
-/* .storebtnicon{
-    width: 100%;
-    height: 50px;
-} */
+
+.storebtnicon{
+    position: absolute;
+    left: 50%;
+    top: 10px;
+    transform: translate(-50%, -2px);
+    width: fit-content;
+}
+
+.btnname{
+    position: absolute;
+    left: 50%;
+    top: 36px;
+    transform: translate(-50%,0);
+}
+
 #pagination .on {font-weight: bold; cursor: default;color:#777;}
+
 
 /* 팝업-제보하기 */
 .popupbox-report{
@@ -591,17 +583,13 @@ input{
     height: 250px;
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0.5rem 0.5rem 0.5rem #00000029;
-    border-radius: 2rem;
+    border-radius: 30px;
     opacity: 1;
 }
 
 p{
     margin: 0;
     padding: 0;
-}
-
-#id_stores, #id_type, #id_content{
-    outline: 0;
 }
 
 #report-storesname-box{
@@ -627,6 +615,10 @@ p{
 
 }
 
+#id_name{
+    text-align: center;
+}
+
 #report-type{
     position: absolute;
     top: 75px;
@@ -646,6 +638,7 @@ p{
     border-radius: 5px;
     cursor: pointer;
     background: white;
+    outline: 0;
 }
 
 #report-content{
@@ -663,9 +656,10 @@ p{
     transform: translate(-50%, -50%);
     width: 266px;
     height: 100%;
+    padding: 0;
     border: 2px gray solid;
     border-radius: 5px;
-    padding: 0;
+    outline: 0;
 }
 
 .btn_submit{
@@ -675,7 +669,7 @@ p{
     width: 100%;
     height: 20%;
     background: #6FDFF1 0% 0% no-repeat padding-box;
-    font: normal normal bold 1em/1.5em NanumSquare_ac;
+    font: normal normal bold 21px/26px NanumSquare_ac;
     letter-spacing: -0.35px;
     opacity: 1;
     border-radius: 0 0 30px 30px;

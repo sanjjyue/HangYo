@@ -38,7 +38,7 @@ var btn_storeinfo = document.querySelector(".btn_storeinfo");
 
 // 제보하기
 var report = document.querySelector(".report");
-var btn_report = document.querySelector(".btn_report");
+var btn_report = document.querySelector("#btn_report");
 
 function toggle_report(){
     report.classList.toggle("pop-report");
