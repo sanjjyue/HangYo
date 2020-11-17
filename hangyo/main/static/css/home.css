@@ -266,7 +266,12 @@ body{
     opacity: 1;
 }
 
-/* 팝업-정보재설정 */
+input{
+    border: 0;
+    outline: 0;
+}
+
+/* 팝업-개발자한마디 */
 
 .popupbox-info { 
     position: absolute;
@@ -306,19 +311,16 @@ body{
     opacity: 1;
 }
 
-.inputbox{
+/* .inputbox{
     position: absolute;
     top: 32%;
     left: 0;
     width: 100%;
     padding: 1% 0% 1% 0%;
-}
+} */
 
-input{
-    /* width: 70%; */
-    /* padding: 0.2em; */
-    border: 0;
-    outline: 0;
+#id_name{
+    text-align: center;
 }
 
 .input-info{
