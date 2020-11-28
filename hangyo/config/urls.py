@@ -21,6 +21,6 @@ from main.views import mainpage,report
 urlpatterns = [
     path('admin/', admin.site.urls),
     path('',mainpage, name = 'mainpage'),
-    path('report', report, name = 'report'),
+    path('report/<int:store_id>', report, name = 'report'),
 ]
 #test

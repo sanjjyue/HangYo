@@ -8,12 +8,14 @@ def mainpage(request):
     reportform = ReportForm()
     return render(request,'home.html', {'take_all_info' : all_info,'reportform' : ReportForm})
 
-def report(request):
+def report(request, store_id):
     
     if request.method == "POST":
         contentform = ReportForm(request.POST)
         if contentform.is_valid():
-            contentform.save()
+            saved_form = contentform.save(commit=False)
+            saved_form.stores = Stores.objects.get(id=int(store_id)+1)
+            saved_form.save()
             return redirect('mainpage')
     Reportform = reportForm()
 
