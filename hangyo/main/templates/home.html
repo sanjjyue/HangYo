@@ -27,9 +27,9 @@
                     </div>
                 </form>
             </div>
-            <hr>
         </div>
     </div>
+
     <!-- 지도 -->
     <div class="map" id="map"></div>
 
@@ -50,15 +50,6 @@
                     <img src="{% static 'image/money-bag.png' %}">
                 </div>
                 <div id = "categoryname">잔액 확인</div>
-            </div>
-        </button>
-
-        <button class="btn_info" id="categorybutton">
-            <div class="categorybox">
-                <div class="i_info" id="categoryicon">
-                    <img src="{% static 'image/gear.png' %}">
-                </div>
-                <div id = "categoryname">개발자 한마디</div>
             </div>
         </button>
     </div>
@@ -105,87 +96,47 @@
                     <div class = "btnname">전화연결</div>
                 </button>
 
-                <button class="storebutton" id="btn_report">
+                <button class="storebutton" value="" id="btn_report" onclick="btn_report_OnClick(event)";>
                     <div class="storebtnicon" id="i_report">
                         <img src="{% static 'image/siren.png' %}">
                     </div>
                     <div class = "btnname">제보하기</div>
                 </button>
+                
             </div>
         </div>
     </div>
-
-    <!-- 잔액 확인 팝업창 -->
-    <!-- <div class="checkbalance" id="modal">
-        <div class="popupbox-checkbalance">
-            <div class="iconbox">
-                <img src="{% static 'image/coin.png' %}">
-            </div>
-            <div class="btn_close_checkbalance">&times;</div>
-            <div class="titlebox_checkbalance">
-                <div class="title">잔액 확인</div>
-            </div>
-            <div class="contentbox">
-                <div class="content">
-                    김태훈님의 현재 계좌 잔액은 $ 999,999원 입니다.
-                </div>
-            </div>
-            <input type="button" class="btn_iknow" value="알겠어요!">
-        </div>
-    </div>     -->
-
-    <!-- 개발자소개 팝업창 -->
-    <div class="info">
-        <div class="popupbox-info">
-            <div class="iconbox">
-                <img src="{% static 'image/Lovepik.png' %}">
-            </div>
-            <div class="btn_close_info">&times;</div>
-            <div class="titlebox_info">
-                <div class="title">행요!</div>
-            </div>
-            <div class="notebox">
-                <div class="note">
-                    본 페이지는 부산 멋쟁이사자처럼8기<br>
-                    team산쮸에서 제작되었습니다.<br><br>
-                    행복드림카드 이용시 조금이나마<br>
-                    도움이 되었으면 좋겠습니다.<br>
-                    불편함이나 개선사항이 있으시면<br>
-                    언제든 말씀해주세요.
-                </div>
-            </div>
-            <input type="button" class="btn_saveinfo" value="확인">
-        </div>
-    </div>
-
-
 
     <!-- 제보하기 팝업창 -->
     <div class="report">
-        <form method="POST" class="popupbox-report" action = "{% url 'report'%}">
+
+        <form method="POST" class="popupbox-report">
             {% csrf_token %}
             <div id="report-storesname-box">
                 <div id="report-storesname">
-                {{reportform.name}}
+                </div>
+
+                <div class="btn-close-report">
+                    &times;
                 </div>
             </div>
+            
             <p id="report-type">
                 {{reportform.type}}
             </p>
             <p id="report-content">
                 {{reportform.content}}
             </p>
-            <!-- <div class="report-btn-box"> -->
             <input type="submit" class="btn_submit"  value="제보하기">
-            <!-- </div> -->
         </form>
+        
     </div>
 
     <script src="{% static 'js/map.js' %}"></script>
     <script src="{% static 'js/popup.js' %}"></script>
 
-    <!-- 지도 -->
     <script>
+// <!-- 지도 -->
 var markers = [];
 var container = document.getElementById('map');
 var options = {
@@ -366,10 +317,11 @@ var positions = [
     },
     {% endfor %}
 ];
+
 var selectedMarker = null;
 
 
-
+var selectedStoreID = null;
 
 //커스텀 오버레이 생성
 // for (var i = 0; i < contents.length; i ++) {
@@ -403,8 +355,6 @@ var selectedMarker = null;
 // }
 
 
-
-
 // 마커 생성
 for (var i = 0; i < positions.length; i ++) {
     addMarker(positions[i]);
@@ -434,6 +384,10 @@ function addMarker(position){
         }
         selectedMarker = marker;
         var id = this.id;
+        // console.log("qqqq");
+        console.log(id);
+        selectedStoreID = id;
+
         // console.log(id);
         document.querySelector('.storebutton').value = id;
         var contents = positions[id].content;
@@ -445,8 +399,10 @@ function addMarker(position){
         document.querySelector('.storename').innerHTML = contents;
         document.querySelector('.storenumber').innerHTML = storenumber;
         document.querySelector('.storeloca').innerHTML = storeloca;
-        document.querySelector('.longitude').innerHTML = longitude;
-        document.querySelector('.Latitude').innerHTML = Latitude;
+        // document.querySelector('.longitude').innerHTML = longitude;
+        // document.querySelector('.Latitude').innerHTML = Latitude;
+        document.querySelector('#btn_report').value = id;
+        // alert(id)
 
         // return false;
         });
