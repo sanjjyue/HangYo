@@ -125,11 +125,12 @@ body{
     display: flex;
     box-shadow: 0px -5px 6px #00000029;
     opacity: 1;
+    justify-content: space-around;
     z-index: 1;
 }
 
 #categorybutton {
-    width: 34%;
+    width: 100%;
     height: 64px;
     display: inline-flex;
     flex-direction: column;
@@ -176,92 +177,6 @@ body{
     transition: visibility 0s linear 0.25s, opacity 0.25s 0s, transform 0.25s;  */
 }
 
-/* 팝업-잔액확인 */
-/* .popupbox-checkbalance { 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%,-50%);
-    width: 300px;
-    height: 250px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0.5rem 0.5rem 0.5rem #00000029;
-    border-radius: 30px;
-    opacity: 1;
-}
-
-.btn_close_checkbalance{
-    position: absolute;
-    top: -4%;
-    right: 4%;
-    font-size: 3rem;
-    color: #707070;
-    opacity: 1;
-    z-index: 1;
-    cursor: pointer;
-}
-
-.iconbox{
-    position: absolute;
-    top: 10%;
-    left: 0;
-    width: 100%;
-    opacity: 1;
-}
-
-.titlebox_checkbalance{
-    position: absolute;
-    top: 28%;
-    left: 0;
-    width: 100%;
-}
-
-.title{
-    font: normal normal 800 23px/26px NanumSquare_ac;
-    letter-spacing: -0.34px;
-    color: #1E1B1B;
-    opacity: 1;
-}
-
-.contentbox{
-    position: absolute;
-    top: 42%;
-    left: 0;
-    width: 90%;
-    padding: 5%;
-}
-
-.content{
-    padding: 0% 12%;
-    text-align: center;
-    font: normal normal bold 1.21px/26px Agency FB;
-    letter-spacing: -0.6px;
-    color: #464646DB;
-    opacity: 1;
-}
-
-.btn_iknow{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 20%;
-    background: #6FDFF1 0% 0% no-repeat padding-box;
-    border-radius: 0 0 30px 30px;
-    font: normal normal bold 1.2em/1.8em NanumSquare_ac;
-    letter-spacing: -0.32px;
-    opacity: 1;
-    cursor: pointer;
-    outline: 0;
-}
-
-.pop-checkbalance{ 
-    opacity: 1; 
-    visibility: visible; 
-    transform: scale(1.0); 
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
-} */
-
 .iconbox{
     position: absolute;
     top: 10%;
@@ -275,111 +190,12 @@ input{
     outline: 0;
 }
 
-/* 팝업-개발자한마디 */
-
-.popupbox-info { 
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, -50%);
-    width: 300px;
-    height: 350px;
-    background: #FFFFFF 0% 0% no-repeat padding-box;
-    box-shadow: 0.5rem 0.5rem 0.5rem #00000029;
-    border-radius: 30px;
-    opacity: 1;
-}
-
-.btn_close_info{
-    position: absolute;
-    top: -2%;
-    right: 3%;
-    font-size: 3rem;
-    color: #707070;
-    opacity: 1;
-    z-index: 1;
-    cursor: pointer;
-}
-
-.titlebox_info{
-    position: absolute;
-    top: 20%;
-    left: 0;
-    width: 100%;
-}
-
-.title{
-    font: normal normal 800 23px/26px NanumSquare_ac;
-    letter-spacing: -0.34px;
-    color: #1E1B1B;
-    opacity: 1;
-}
-
-/* .inputbox{
-    position: absolute;
-    top: 32%;
-    left: 0;
-    width: 100%;
-    padding: 1% 0% 1% 0%;
-} */
-
-/* .input-info{
-    margin: 2px 0;
-    border: 0;
-    outline: 0;
-    border-bottom: 1px solid #707070;
-    font: normal normal bold 21px/26px NanumSquare_ac;
-    letter-spacing: -0.35px;
-    opacity: 1;
-} */
-
-/* ::placeholder{
-    height: 30%;
-} */
-
-.notebox{
-    position: absolute;
-    top: 30%;
-    left: 0;
-    width: 90%;
-    padding: 5%;
-}
-
-.note{
-    width: 92%;
-    padding: 0% 4% 0% 4%;
-    text-align: center;
-    font: normal normal bold 1em/1.2em NanumSquare_ac;
-    letter-spacing: 0px;
-    color: black;
-    opacity: 0.6;
-    white-space : nowrap
-}
-
-.btn_saveinfo{
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    width: 100%;
-    height: 15%;
-    background: #6FDFF1 0% 0% no-repeat padding-box;
-    border-radius: 0 0 30px 30px;
-    font: normal normal bold 1.2em/1.5em NanumSquare_ac;
-    letter-spacing: -0.32px;
-    opacity: 1;
-    cursor: pointer;
-    outline: 0;
-}
-
-.pop-info{
-    opacity: 1; 
-    visibility: visible; 
-    transform: scale(1.0); 
-    transition: visibility 0s linear 0s, opacity 0.25s 0s, transform 0.25s; 
+.btnmane-report{
+    opacity: 0;
+    
 }
 
 /* 팝업-가게정보 */
-
 
 .storeinfo{
     position: absolute;
@@ -527,25 +343,27 @@ input{
     height: 70px;
     display: flex;
     flex-direction: row;
+    justify-content: space-around;
 }
 
 .storebutton{
     position: relative;
     left: 0;
     top: 0;
-    margin: 5px;
-    padding: 0;
-    border: 0;
-    outline: 0;
-    width: 33%;
+    width: 100%;
     height: 70px;
+    margin: 0 5px;
+    padding: 0;
     font: normal normal bold 15px/26px NanumSquare_ac;
     letter-spacing: -0.23px;
     background: #F7F7F7 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 13px;
     opacity: 1;
+    border: 0;
+    outline: 0;
     cursor: pointer;
+
 }
 
 .input-directions{
@@ -616,8 +434,18 @@ p{
 
 }
 
-#id_name{
-    text-align: center;
+/* .btn-close-report-box{
+    position: absolute;
+    right: 5px;
+    top: 5px;
+} */
+
+.btn-close-report{
+    position: absolute;
+    right:  15px;
+    top: 10px;
+    font: normal normal bold 30px NanumSquare_ac;
+    cursor: pointer;
 }
 
 #report-type{

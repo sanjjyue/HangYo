@@ -1,24 +1,3 @@
-// 정보 재설정
-var info = document.querySelector(".info"); 
-var btn_info = document.querySelector(".btn_info"); 
-var btn_close_info = document.querySelector(".btn_close_info");
-var btn_saveinfo = document.querySelector(".btn_saveinfo")
-
-function toggle_info(){
-    info.classList.toggle("pop-info");
-}
-
-function btn_info_OnClick(event) {
-    if (event.target === info) {
-        toggle_info();
-    }
-}
-
-btn_info.addEventListener("click", toggle_info);
-btn_close_info.addEventListener("click", toggle_info);
-btn_saveinfo.addEventListener("click", toggle_info);
-window.addEventListener("click", btn_info_OnClick);
-
 // 가맹점정보
 var storeinfo = document.querySelector(".storeinfo");
 var btn_storeinfo = document.querySelector(".btn_storeinfo");
@@ -39,16 +18,20 @@ var btn_storeinfo = document.querySelector(".btn_storeinfo");
 // 제보하기
 var report = document.querySelector(".report");
 var btn_report = document.querySelector("#btn_report");
+var close_report = document.querySelector(".btn-close-report");
 
 function toggle_report(){
     report.classList.toggle("pop-report");
+    document.getElementById("report-storesname").innerHTML= positions[selectedStoreID].content;
 }
 
 function btn_report_OnClick(event) {
-    if (event.target === report) {
+    var actionUrl = "report/" + event.target.value;
+    if(event.target.value){
+        console.log(event.target);
         toggle_report();
+        document.querySelector('.popupbox-report').action = actionUrl;
     }
 }
 
-btn_report.addEventListener("click", toggle_report);
-window.addEventListener("click", btn_report_OnClick);
+close_report.addEventListener("click", toggle_report);
