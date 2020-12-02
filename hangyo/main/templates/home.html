@@ -89,7 +89,7 @@
                     <div class = "btnname" id = "name_directions">길찾기</div>
                 </button>
 
-                <button class="storebutton" id="btn_call" onclick="location.href='tel:{{i.phone_num}}'">
+                <button class="storebutton" value="" id="btn_call" onclick="storeCall(event)";>
                     <div class="storebtnicon" id="i_call">
                         <img src="{% static 'image/page-1.png' %}">
                     </div>
@@ -384,8 +384,6 @@ function addMarker(position){
         }
         selectedMarker = marker;
         var id = this.id;
-        // console.log("qqqq");
-        console.log(id);
         selectedStoreID = id;
 
         // console.log(id);
@@ -402,6 +400,7 @@ function addMarker(position){
         // document.querySelector('.longitude').innerHTML = longitude;
         // document.querySelector('.Latitude').innerHTML = Latitude;
         document.querySelector('#btn_report').value = id;
+        document.querySelector('#btn_call').value = id;
         // alert(id)
 
         // return false;
@@ -414,17 +413,21 @@ function addMarker(position){
 
     const searchLoad = (event) => {
         target_id = event.target.value;
+        console.log(target_id)
         // console.log(positions[target_id].Latitude)
         // console.log(positions[target_id].longitude)
         action_url = "https://map.kakao.com/link/to/" + positions[target_id].content + ',' + positions[target_id].Latitude + ',' + positions[target_id].longitude;
         window.open(action_url)
     }
-    // const storeCall = (event) => {
-    //     target_id = event.target.value;
-    //     console.log(positions[target_id].storenumber)
-    //     action_url = "location.href='tel:" + positions[target_id].storenumber;
-    //     window.open(action_url)
-    // }
+
+    const storeCall = (event) => {
+        console.log(event.target)
+        target_id = event.target.value;
+        console.log(positions[target_id].phone_num)
+        storecall = "tel:" + positions[target_id].phone_num;
+        // console.log(storecall)
+        location.href = storecall
+    }
 
 
     </script>
