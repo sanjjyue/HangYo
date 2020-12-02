@@ -10,9 +10,9 @@ body{
 
 .top-container{
     position: absolute;
-    top: 5%;
+    top: 30px;
     left: 50%;
-    transform: translate(-55%,-5%);
+    transform: translateX(-50%);
     width: 90%;
     height: 43px;
     padding: 0% 2%;
@@ -22,7 +22,6 @@ body{
 
 .local-box{
     position: absolute;
-    left: 7%;
     width: 15%;
     height: 29px;
     margin: 7px 0px ;
@@ -35,11 +34,13 @@ body{
 
 .search-box{
     position: absolute;
-    left: 24%;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
     width: 60%;
     height: 43px;
-    margin: 0% 1.8%;
-    padding: 0 0 0 5px;
+    /* margin: 0% 1.8%;
+    padding: 0 0 0 5px; */
     background: #FFFFFF 0% 0% no-repeat padding-box;
     box-shadow: 0px 3px 6px #00000029;
     border-radius: 19px;
@@ -49,7 +50,7 @@ body{
 
 .search-button-box{
     position: absolute;
-    left: 90%;
+    left: 83%;
     width: 43px;
     height: 43px;
     background: #4AD295 0% 0% no-repeat padding-box;
@@ -123,17 +124,17 @@ body{
     margin: 0;
     padding: 0;
     display: flex;
+    justify-content: space-around;
     box-shadow: 0px -5px 6px #00000029;
     opacity: 1;
-    justify-content: space-around;
     z-index: 1;
 }
 
-#categorybutton {
+.categorybutton {
     width: 100%;
     height: 64px;
     display: inline-flex;
-    flex-direction: column;
+    /* flex-direction: column; */
     padding: 0;
     border: 0;
     outline: 0;
@@ -148,12 +149,12 @@ body{
     padding: 10px 0px;
 }
 
-#categoryicon {
+.categoryicon {
     width: 100%;
     height: 50%;
 }
 
-#categoryname {
+.categoryname {
     margin: -4px 0;
     font: normal normal 800 9px/26px NanumSquare_ac;
     letter-spacing: -0.14px;

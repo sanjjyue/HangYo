@@ -35,21 +35,21 @@
 
     <!-- 카테고리바 -->
     <div class="categorybar">
-        <button class="btn_myloca" id="categorybutton" onclick='panTo()'>
+        <button class="categorybutton" id="btn_myloca" onclick='panTo()'>
             <div class="categorybox">
-                <div id="categoryicon">
+                <div class="categoryicon">
                     <img src="{% static 'image/geo.png' %}">
                 </div>
-                <div id = "categoryname">내 위치</div>
+                <div class = "categoryname">내 위치</div>
             </div>
         </button>
 
-        <button class="btn_checkbalance" id="categorybutton" onclick="location.href='http://busan.nhdream.co.kr/Login/PointCheck.jsp'">
+        <button class="categorybutton" id="btn_checkbalance" onclick="location.href='http://busan.nhdream.co.kr/Login/PointCheck.jsp'">
             <div class="categorybox">
-                <div class="i_checkbalance" id="categoryicon">
+                <div class="categoryicon">
                     <img src="{% static 'image/money-bag.png' %}">
                 </div>
-                <div id = "categoryname">잔액 확인</div>
+                <div class = "categoryname">잔액 확인</div>
             </div>
         </button>
     </div>
@@ -250,7 +250,7 @@ var imageSrc1 = "/static/image/marker_me.png",
 var markerImage1 = new kakao.maps.MarkerImage(imageSrc1, imageSize1)
 
 //내위치 버튼 연결
-var here = document.querySelector('.btn_myloca')
+var here = document.querySelector('#btn_myloca')
 
 //현재위치 마커표시
 if (navigator.geolocation) {
